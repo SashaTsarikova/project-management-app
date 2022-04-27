@@ -27,7 +27,17 @@
         "airbnb-typescript/base"
       ],
       "rules": {
-        "class-methods-use-this": "off",
+        "class-methods-use-this": [
+          "error",
+          {
+            "exceptMethods": [
+              "transform",
+              "canActivate",
+              "canLoad",
+              "intercept"
+            ]
+          }
+        ],
         "import/prefer-default-export": "off",
         "@angular-eslint/directive-selector": [
           "error",
