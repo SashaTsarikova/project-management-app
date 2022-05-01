@@ -1,0 +1,47 @@
+.login-form{
+  min-height: 25vw;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+}
+
+.login_greeting :first-child{
+  text-transform: capitalize ;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 26px;
+  line-height: 39px; 
+  color: #333333;
+}
+
+.login_greeting :last-child{
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 27px;
+} 
+
+.login_greeting :last-child::first-letter{
+  text-transform: uppercase;
+}
+
+
+.login-form .mat-form-field{
+  width: 100%;
+}
+
+.email-container{
+  background-color: white;
+}
+
+.login_button{
+  width: 100%;
+  height: auto;
+  border-radius: 30px;
+  padding: 5px 0;
+}
+
+.login_sign-up-link{
+  padding-top: 10px;
+}
