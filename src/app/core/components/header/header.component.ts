@@ -9,8 +9,7 @@ import { TranslateService } from '@ngx-translate/core';
 export class HeaderComponent implements OnInit {
   constructor(public translate: TranslateService) { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
 
   changeLang(lang: string) {
     if (lang) {
