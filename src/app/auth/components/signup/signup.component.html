@@ -1,1 +1,36 @@
-<p>signup works!</p>
+<div class="signup-form">
+  <div class="signup_greeting">
+    <p>create new profile</p>
+  </div>
+  <mat-form-field appearance="outline">
+    <mat-label>Enter your name</mat-label>
+    <input matInput>
+  </mat-form-field>
+  <div class="email-container">
+    <mat-form-field appearance="outline">
+      <mat-label>Enter your email</mat-label>
+      <input matInput type="text" placeholder="pat@example.com" [formControl]="email" required>
+      <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+    </mat-form-field>
+  </div>
+  <div class="password-container">
+    <mat-form-field appearance="outline">
+      <mat-label>Enter your password</mat-label>
+      <input matInput [type]="hide ? 'password' : 'text'">
+      <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>
+    </mat-form-field>
+  </div>
+  <div class="password-container">
+    <mat-form-field appearance="outline">
+      <mat-label>Repeat your password</mat-label>
+      <input matInput [type]="hide ? 'password' : 'text'">
+      <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>
+    </mat-form-field>
+  </div>
+  <button class="signup_button" mat-raised-button color="primary">Sign up</button>
+  <p class="signup_sign-up-link">Already have an account? <button mat-button color="primary">Login</button></p>
+</div>
