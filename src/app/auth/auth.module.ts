@@ -1,17 +1,20 @@
 import { NgModule } from '@angular/core';
+import { RouterModule } from '@angular/router';
 import SharedModule from '../shared/shared.module';
+import AuthRoutingModule from './auth-routing.module';
 import { AuthComponent } from './auth.component';
-import {RouterModule} from "@angular/router";
+import { LoginComponent } from './components/login/login.component';
+import { SignupComponent } from './components/signup/signup.component';
 
 @NgModule({
   declarations: [
-    AuthComponent
+    AuthComponent,
+    LoginComponent,
+    SignupComponent,
   ],
   imports: [
+    AuthRoutingModule,
     SharedModule,
-    RouterModule.forChild([
-      {path: '', component: AuthComponent}
-    ])
   ],
 })
 export class AuthModule { }
