@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { ConfirmationComponent } from './components/confirmation/confirmation.component';
 
 const MODULES = [
   CommonModule,
@@ -11,7 +12,9 @@ const MODULES = [
 ];
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    ConfirmationComponent
+  ],
   imports: MODULES,
   exports: MODULES,
 })
