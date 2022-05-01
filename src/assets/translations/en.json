@@ -1,0 +1,10 @@
+{
+  "HOME": {
+    "TITLE": "Big title"
+  },
+  "LANGUAGES": {
+    "EN": "English",
+    "RU": "Russian",
+    "PLACEHOLDER": "Please, choose the language you like"
+  }
+}
