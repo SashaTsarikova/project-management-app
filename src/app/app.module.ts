@@ -1,5 +1,5 @@
+import {NgModule, Provider} from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -10,6 +10,14 @@ import AppComponent from './app.component';
 
 import CoreModule from './core/core.module';
 import SharedModule from './shared/shared.module';
+import {HTTP_INTERCEPTORS} from "@angular/common/http";
+import {AuthInterceptor} from "./auth/services/auth.interceptor";
+
+const INTERCEPTOR_PROVIDER: Provider = {
+  provide:HTTP_INTERCEPTORS,
+  useClass: AuthInterceptor,
+  multi: true
+}
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/translations/', '.json');
@@ -34,6 +42,7 @@ export function createTranslateLoader(http: HttpClient) {
       defaultLanguage: 'en',
     }),
   ],
+  providers: [INTERCEPTOR_PROVIDER],
   bootstrap: [AppComponent],
 })
 export default class AppModule { }
