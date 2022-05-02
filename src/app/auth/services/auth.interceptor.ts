@@ -13,6 +13,9 @@ export class AuthInterceptor implements HttpInterceptor {
   constructor() {}
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-    return next.handle(request);
+    const addHeader = request.clone({
+      headers: request.headers.append('Access-Control-Allow-Origin', '*')
+    });
+    return next.handle(addHeader);
   }
 }

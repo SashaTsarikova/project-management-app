@@ -8,7 +8,7 @@ import {ISignUp} from "../interfaces/ISignUp.interface";
   providedIn: 'root'
 })
 export class AuthService {
-  PATH = 'localhost:4000';
+  PATH = 'http://localhost:4000';
   private currentUserSubject: BehaviorSubject<any>;
   public currentUser$: Observable<any>;
 
@@ -32,6 +32,6 @@ export class AuthService {
   }
 
   signup(signupUser: ISignUp) {
-    return this.http.post(`${this.PATH}/signin`, signupUser)
+    return this.http.post(`${this.PATH}/signup`, signupUser)
   }
 }
