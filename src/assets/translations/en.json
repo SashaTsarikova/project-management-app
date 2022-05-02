@@ -1,0 +1,17 @@
+{
+  "HEADER": {},
+  "FOOTER": {},
+  "NOTFOUND": {},
+  "AUTH": {},
+  "BOARDS": {},
+  "BOARD_FORM": {},
+  "COLUMN_FORM": {},
+  "TASK_FORM": {},
+  "USER": {},
+  "CONFIRMATION": {},
+  "LANGUAGES": {
+    "EN": "English",
+    "RU": "Russian",
+    "PLACEHOLDER": "Please, choose the language you like"
+  }
+}

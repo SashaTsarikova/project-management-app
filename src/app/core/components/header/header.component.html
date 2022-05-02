@@ -1,1 +1,10 @@
-<p>header works!</p>
+<mat-form-field>
+  <mat-select placeholder="{{'LANGUAGES.PLACEHOLDER' | translate}}" >
+    <mat-option #matOptionEng value="en" (click)="changeLang(matOptionEng.value)" >
+      {{'LANGUAGES.EN' | translate}}
+    </mat-option>
+    <mat-option #matOptionRu value="ru" (click)="changeLang(matOptionRu.value)">
+      {{'LANGUAGES.RU' | translate}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
