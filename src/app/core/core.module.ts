@@ -8,11 +8,11 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
   declarations: [
     HeaderComponent,
     FooterComponent,
-    NotFoundComponent
+    NotFoundComponent,
   ],
   imports: [
     SharedModule,
   ],
-  exports: [],
+  exports: [HeaderComponent],
 })
 export default class CoreModule {}

@@ -1,7 +1,10 @@
 import {NgModule, Provider} from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import AppRoutingModule from './app-routing.module';
 import AppComponent from './app.component';
 
@@ -16,6 +19,10 @@ const INTERCEPTOR_PROVIDER: Provider = {
   multi: true
 }
 
+export function createTranslateLoader(http: HttpClient) {
+  return new TranslateHttpLoader(http, './assets/translations/', '.json');
+}
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,6 +33,14 @@ const INTERCEPTOR_PROVIDER: Provider = {
     BrowserAnimationsModule,
     CoreModule,
     SharedModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: createTranslateLoader,
+        deps: [HttpClient],
+      },
+      defaultLanguage: 'en',
+    }),
   ],
   providers: [INTERCEPTOR_PROVIDER],
   bootstrap: [AppComponent],

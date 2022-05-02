@@ -2,15 +2,18 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { TranslateModule } from '@ngx-translate/core';
 import { ConfirmationComponent } from './components/confirmation/confirmation.component';
-import {MaterialModule} from "./material/material.module";
+import { MaterialModule } from "./material/material.module";
 
 const MODULES = [
   CommonModule,
+  MaterialModule,
   ReactiveFormsModule,
   FormsModule,
   HttpClientModule,
-  MaterialModule
+  MaterialModule,
+  TranslateModule,
 ];
 
 @NgModule({
