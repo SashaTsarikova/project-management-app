@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {AuthService} from "../../services/auth.service";
+import {ErrorHandlerService} from "../../../shared/services/errorhandler.service";
 
 @Component({
   selector: 'app-login',
@@ -7,20 +9,37 @@ import { FormControl, Validators } from '@angular/forms';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
-  email = new FormControl('', [Validators.required, Validators.email]);
-
+  loginForm!: FormGroup;
   hide = true;
 
-  constructor() { }
+  constructor(
+    private fb: FormBuilder,
+    private auth: AuthService,
+    private err: ErrorHandlerService
+    ) {}
 
   ngOnInit(): void {
+    this.loginForm = this.fb.group({
+      email: ['', Validators.compose([Validators.required, Validators.email])],
+      password: ['', Validators.required]
+    })
   }
 
   getErrorMessage() {
-    if (this.email.hasError('required')) {
+    if (this.loginForm.get('email')?.hasError('required')) {
       return 'You must enter a value';
     }
+    return 'Not a valid email';
+  }
 
-    return this.email.hasError('email') ? 'Not a valid email' : '';
+  onSubmit() {
+    if (!this.loginForm.value) {
+      return;
+    }
+    this.auth.login(this.loginForm.value)
+      .subscribe(
+        res => this.err.errorHandler('Login success'),
+        error => this.err.errorHandler('Incorrect email or password')
+      )
   }
 }
