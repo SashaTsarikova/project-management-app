@@ -40,10 +40,7 @@ export class AuthService {
             this.userToken.next(token.token);
             localStorage.setItem('token', token.token)
         }),
-        switchMap(() => {
-          console.log('route')
-          return this.router.navigate(['boards'])
-        })
+        switchMap(() => this.router.navigate(['boards']))
       )
   }
 
