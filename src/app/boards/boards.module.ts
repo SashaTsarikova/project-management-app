@@ -8,8 +8,8 @@ import { BoardFormComponent } from './components/forms/board-form/board-form.com
 import { ColumnFormComponent } from './components/forms/column-form/column-form.component';
 import { TaskFormComponent } from './components/forms/task-form/task-form.component';
 import { BoardsComponent } from './pages/boards/boards.component';
-import SharedModule from '../shared/shared.module';
-import BoardsRoutingModule from './boards-routing.module';
+import { SharedModule } from '../shared/shared.module';
+import { BoardsRoutingModule } from './boards-routing.module';
 
 @NgModule({
   declarations: [

@@ -4,7 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { TranslateModule } from '@ngx-translate/core';
 import { ConfirmationComponent } from './components/confirmation/confirmation.component';
-import MaterialModule from './material/material.module';
+import { MaterialModule } from './material/material.module';
 
 const MODULES = [
   CommonModule,
@@ -12,7 +12,6 @@ const MODULES = [
   ReactiveFormsModule,
   FormsModule,
   HttpClientModule,
-  MaterialModule,
   TranslateModule,
 ];
 
@@ -21,4 +20,4 @@ const MODULES = [
   imports: MODULES,
   exports: MODULES,
 })
-export default class SharedModule {}
+export class SharedModule {}

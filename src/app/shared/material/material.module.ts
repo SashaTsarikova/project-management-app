@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
-import { MatFormFieldModule } from "@angular/material/form-field";
-import { MatSnackBarModule } from "@angular/material/snack-bar";
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
@@ -23,5 +23,4 @@ const MATERIALS = [
   imports: [MATERIALS],
   exports: [MATERIALS],
 })
-
-export default class MaterialModule { }
+export class MaterialModule {}
