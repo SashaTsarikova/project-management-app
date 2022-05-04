@@ -22,17 +22,14 @@ export class SignupComponent implements OnInit {
   ngOnInit(): void {
     this.signupForm = this.fb.group({
       name: ['', Validators.required],
-      email: ['', Validators.compose([Validators.required, Validators.email])],
+      login: ['', Validators.required],
       password: ['', Validators.required],
       repeatpass: ['', Validators.required],
     });
   }
 
   getErrorMessage() {
-    if (this.signupForm.get('email')?.hasError('required')) {
-      return 'You must enter a value';
-    }
-    return this.signupForm.get('email')?.hasError('email') ? 'Not a valid email' : '';
+    return 'You must enter a value';
   }
 
   onSubmit() {
@@ -48,7 +45,7 @@ export class SignupComponent implements OnInit {
     delete this.signupForm.value.repeatpass;
     this.auth.signup(this.signupForm.value).subscribe(
       (res) => this.err.errorHandler('Signup success'),
-      (error) => this.err.errorHandler('Error, Please try again'),
+      (error) => this.err.errorHandler(error.error.message)
     );
   }
 }
