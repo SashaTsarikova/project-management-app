@@ -1,6 +1,10 @@
 {
   "HEADER": {},
-  "FOOTER": {},
+  "FOOTER": {
+    "GRIGORII" : "Grogirii Iavorskii",
+    "SASHA" : "Sasha Tsarikova",
+    "ANDREI": "Andrei Yakimenka"
+  },
   "NOTFOUND": {
     "NotFound" : "Page Not Found",
     "SORRY" : "We're sorry. The page you are looking for cannot be found.",

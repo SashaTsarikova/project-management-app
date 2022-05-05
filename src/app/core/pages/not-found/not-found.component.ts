@@ -16,10 +16,4 @@ export class NotFoundComponent implements OnInit {
   btnClick = () => {
     this.router.navigateByUrl('');
   };
-
-  changeLang(lang: string) {
-    if (lang) {
-      this.translate.use(lang);
-    }
-  }
 }
