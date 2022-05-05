@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 
 @Component({
@@ -7,7 +8,22 @@ import { TranslateService } from '@ngx-translate/core';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
-  constructor(public translate: TranslateService) { }
+  public userName = '';
+
+  public isLoggedIn = false;
+
+  public headerFixed:boolean = false;
+
+  @HostListener('window:scroll', ['$event.target'])
+  onScroll(): void {
+    if (window.scrollY > 10) {
+      this.headerFixed = true;
+    } else {
+      this.headerFixed = false;
+    }
+  }
+
+  constructor(public translate: TranslateService, private router: Router) { }
 
   ngOnInit(): void { }
 
@@ -15,5 +31,17 @@ export class HeaderComponent implements OnInit {
     if (lang) {
       this.translate.use(lang);
     }
+  }
+
+  goToLogin() {
+    this.router.navigate(['auth', 'login']);
+  }
+
+  goToSignup() {
+    this.router.navigate(['auth', 'signup']);
+  }
+
+  goToUser() {
+    this.router.navigate(['user']);
   }
 }
