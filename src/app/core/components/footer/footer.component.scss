@@ -1,0 +1,48 @@
+.footer{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.footer_logo{
+  width: 130px;
+  height: 30px;
+  margin: 10px;
+}
+
+.footer_authors{
+  width: 50%;
+  margin: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.footer_authors a{
+  text-decoration: none;
+  color: black;
+}
+
+.footer_authors p{
+  margin: 1px;
+  white-space: nowrap;
+}
+
+.footer_year{
+  margin: 10px;
+  align-items: center;
+  font-size: 15px;
+}
+@media (max-width: 375px){
+
+  .footer_logo, .footer_authors{
+    margin-right: 1px;
+    margin-left: 1px;
+  }
+  .footer_year{
+    margin: 1px;
+    margin-right: 5px;
+  }
+}

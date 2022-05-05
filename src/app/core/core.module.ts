@@ -13,6 +13,9 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
   imports: [
     SharedModule,
   ],
-  exports: [HeaderComponent],
+  exports: [
+    HeaderComponent,
+    FooterComponent,
+  ],
 })
 export class CoreModule {}
