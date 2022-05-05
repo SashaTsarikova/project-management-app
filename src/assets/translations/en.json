@@ -21,7 +21,9 @@
       }
     }
   },
-  "HEADER": {},
+  "HEADER": {
+    "CREATE":"Create"
+  },
   "FOOTER": {
     "GRIGORII" : "Grogirii Iavorskii",
     "SASHA" : "Sasha Tsarikova",

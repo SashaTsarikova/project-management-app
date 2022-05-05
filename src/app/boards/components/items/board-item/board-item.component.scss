@@ -1,0 +1,23 @@
+.main-container{
+  width: 350px;
+  min-height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  transition: all 0.2s linear;
+  cursor: pointer;
+  .title{
+    font-size: clamp(1.5rem, 2rem, 2.5rem);
+    font-weight: 700;
+    line-height: clamp(1.6rem, 2.1rem, 2.6rem);
+    letter-spacing: 0.2rem;
+  }
+  &:hover{
+    box-shadow: 0 0 15px rgba(0,0,0,0.75);
+  }
+  &:active{
+    box-shadow: 0 0 10px rgba(107, 104, 104, 0.75);
+    transform: scale(0.95);
+  }
+}
