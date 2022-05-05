@@ -1,7 +1,11 @@
 {
   "HEADER": {},
   "FOOTER": {},
-  "NOTFOUND": {},
+  "NOTFOUND": {
+    "NotFound" : "Page Not Found",
+    "SORRY" : "We're sorry. The page you are looking for cannot be found.",
+    "OnMainPage" : "On main page"
+  },
   "AUTH": {},
   "BOARDS": {},
   "BOARD_FORM": {},
