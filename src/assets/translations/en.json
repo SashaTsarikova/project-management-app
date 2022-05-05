@@ -1,4 +1,26 @@
 {
+  "WELCOME": {
+    "PROJ-NAME":"project management app",
+    "DESCRIPTION": "Helps teams solve work problems efficiently",
+    "DEVELOPERS": "developers",
+    "TEAM": {
+      "SASHA": {
+        "NAME": "Aleksandra Tsarikova",
+        "ROLE": "Team lead",
+        "INPUT": "?"
+      },
+      "GRIGIRII": {
+        "NAME": "Grigorii Iavorskii",
+        "ROLE": "Front-end developer",
+        "INPUT": "?"
+      },
+      "ANDREY": {
+        "NAME": "Andrei Yakimenka",
+        "ROLE": "Front-end developer",
+        "INPUT": "?"
+      }
+    }
+  },
   "HEADER": {},
   "FOOTER": {
     "GRIGORII" : "Grogirii Iavorskii",

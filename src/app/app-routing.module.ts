@@ -2,12 +2,17 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './auth/guards/auth.guard';
 import { NotFoundComponent } from './core/pages/not-found/not-found.component';
+import { WelcomeComponent } from './core/pages/welcome/welcome.component';
 
 const routes: Routes = [
   {
     path: '',
     redirectTo: 'boards',
     pathMatch: 'full',
+  },
+  {
+    path: 'welcome',
+    component: WelcomeComponent,
   },
   {
     path: 'auth',

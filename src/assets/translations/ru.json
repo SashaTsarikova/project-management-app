@@ -1,4 +1,26 @@
 {
+  "WELCOME": {
+    "PROJ-NAME":"project management app",
+    "DESCRIPTION": "Для эффективного решения задач вашей команды",
+    "DEVELOPERS": "разработчики",
+    "TEAM": {
+      "SASHA": {
+        "NAME": "Царикова Александра",
+        "ROLE": "Тим лид",
+        "INPUT": "?"
+      },
+      "GRIGIRII": {
+        "NAME": "Яворский Григорий",
+        "ROLE": "Веб-разработчик",
+        "INPUT": "?"
+      },
+      "ANDREY": {
+        "NAME": "Якименко Андрей",
+        "ROLE": "Веб-разработчик",
+        "INPUT": "?"
+      }
+    }
+  },
   "HEADER": {},
   "FOOTER": {
     "GRIGORII" : "Григорий Яворский",

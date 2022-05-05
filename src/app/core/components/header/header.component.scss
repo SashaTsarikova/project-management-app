@@ -1,0 +1,106 @@
+.header{
+  height: 11vmin;
+  z-index: 10;
+}
+
+.main-container {
+  height: inherit;
+  width: 85%;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 50% 50%;
+}
+
+.folder-lang-container{
+  display: flex;
+  align-items: center;
+  .folder-icon{
+    width: 3rem;
+    mat-icon{
+      font-size: 2rem;
+    }
+  }
+}
+
+.auth-container{
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  .auth-container_buttons {
+    width: clamp(200px, 40%, 300px);
+    display: flex;
+    justify-content: flex-end;
+    .button{
+      margin: 1vmin;
+      text-transform: capitalize;
+    }
+  }
+  .auth-container_user{
+    display: flex;
+    align-items: baseline;
+    .title{
+      font-size: 1.3rem;
+      line-height: 1.4rem;
+      text-transform: capitalize;
+      text-decoration: underline;
+      color: #ffa726;
+    }
+  }
+}
+
+.fixed{
+  position: sticky;
+  transition: 0.5s ease-in-out;
+  height: clamp(60px, 9vmin, 120px);
+  background-color: rgba($color: #309f66, $alpha: 0.8);
+  top: 0px;
+}
+
+.nofixed{
+  position: static;
+  transition: 0.3s ease-in-out;
+}
+
+@media (max-width: 768px) and (orientation: landscape){
+  .header{
+    height: auto;
+  }
+  .main-container {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    flex-wrap: wrap-reverse;
+    .auth-container{
+      flex-direction: column-reverse;
+      padding: 2%;
+    }
+  }
+}
+
+
+
+@media (max-width: 768px) and (orientation: portrait){
+  .header{
+    height: auto;
+  }
+  .main-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap-reverse;
+    .folder-lang-container{
+      margin: 0 auto;
+    }
+    .auth-container{
+      padding: 2% 0;
+      width: 100%;
+      .title{
+        display: none;
+      }
+    }
+  }
+  .fixed{
+    height: clamp(110px, 9vmax, 140px);
+  }
+}
+
+
