@@ -36,3 +36,9 @@ simple-snack-bar > span {
   margin: 0 auto;
   text-align:center !important;
 }
+
+.colored-bg{
+  background: -webkit-linear-gradient(45deg, rgb(9, 151, 217) 15%, rgb(63, 81, 181) 75%);
+  background: -moz-linear-gradient(45deg, rgb(9, 151, 217) 15%, rgb(63, 81, 181) 75%);
+  background: linear-gradient(45deg, rgb(9, 151, 217) 15%, rgb(63, 81, 181) 75%);
+}

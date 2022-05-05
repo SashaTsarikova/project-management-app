@@ -1,0 +1,66 @@
+.main-container{
+  min-height: 79vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .edit-form{
+    width: 30%;
+    min-width: 330px;
+    min-height: 25vw;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    background: rgba($color: #47c383, $alpha: 1);
+    border-radius: 10%;
+    padding: 2%;
+  }
+
+  .edit_greeting{
+    text-transform: capitalize ;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 26px;
+    line-height: 39px;
+    color: rgb(235, 246, 233);
+    text-align: center;
+    letter-spacing: 0.8rem;
+  }
+
+  .edit_greeting :last-child::first-letter{
+    text-transform: uppercase;
+  }
+
+  .edit-form .mat-form-field{
+    width: 100%;
+  }
+
+  .edit_button{
+    width: 100%;
+    height: auto;
+    border-radius: 30px;
+    padding: 5px 0;
+  }
+
+  .edit_sign-up-link{
+    padding-top: 10px;
+  }
+}
+
+@media (max-width: 1024px) and (orientation: landscape){
+  .main-container{
+    .edit-form{
+      margin: 5vmax 0;
+      width: 45%;
+    }
+  }
+}
+
+@media (max-width: 1024px) and (orientation: portrait){
+  .main-container{
+    .edit-form{
+      width: 60%;
+    }
+  }
+}
+
