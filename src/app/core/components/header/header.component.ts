@@ -10,7 +10,7 @@ import { TranslateService } from '@ngx-translate/core';
 export class HeaderComponent implements OnInit {
   public userName = '';
 
-  public isLoggedIn = false;
+  public isLoggedIn = true;
 
   public headerFixed:boolean = false;
 
