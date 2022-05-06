@@ -36,6 +36,13 @@
   },
   "AUTH": {},
   "BOARDS": {},
+  "CREATE_NEW_BOARD": {
+    "ENTER_BOARD_NAME" : "Введите название для новой доски",
+    "BOARD_TITLE" : "Название доски",
+    "CANCEL" : "Отмена",
+    "CREATE" : "Создать",
+    "ERROR" : "Вы должны ввести значение"
+  },
   "BOARD_FORM": {},
   "COLUMN_FORM": {},
   "TASK_FORM": {},

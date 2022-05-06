@@ -36,6 +36,13 @@
   },
   "AUTH": {},
   "BOARDS": {},
+  "CREATE_NEW_BOARD": {
+    "ENTER_BOARD_NAME" : "Enter name for a new board",
+    "BOARD_TITLE" : "Board title",
+    "CANCEL" : "Cancel",
+    "CREATE" : "Сreate",
+    "ERROR" : "You must enter a value"
+  },
   "BOARD_FORM": {},
   "COLUMN_FORM": {},
   "TASK_FORM": {},
