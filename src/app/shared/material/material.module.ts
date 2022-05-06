@@ -8,6 +8,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
 import {MatCardModule} from '@angular/material/card';
+import {OverlayModule} from "@angular/cdk/overlay";
 
 const MATERIALS = [
   MatFormFieldModule,
@@ -19,6 +20,7 @@ const MATERIALS = [
   MatNativeDateModule,
   MatSelectModule,
   MatCardModule,
+  OverlayModule,
 ];
 
 @NgModule({

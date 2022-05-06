@@ -33,7 +33,7 @@ export class AuthInterceptor implements HttpInterceptor {
         if (err instanceof HttpErrorResponse) {
           if (err.status === 401) {
             this.errorHandler.errorHandler('Not authorized')
-            this.router.navigate(['/auth/login'])
+            this.router.navigate(['/welcome'])
           }
         }
         return throwError(err);
