@@ -17,7 +17,7 @@
     </div>
     <div class="auth-container">
       <div *ngIf="isLoggedIn" class="auth-container_user">
-        <button mat-button color="warn" aria-label="icon edit" (click)="goToUser()">
+        <button mat-button (click)="createNewBoard()" color="warn" aria-label="icon edit" (click)="goToUser()">
           <mat-icon>edit</mat-icon>
         </button>
         <p class="title">{{ userName }}</p>
