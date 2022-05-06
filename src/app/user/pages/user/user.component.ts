@@ -7,8 +7,6 @@ import { IUser } from '../../interfaces/IUser.interface';
 import { DialogService } from "../../../shared/services/dialogs/dialog.service";
 import { ConfirmationComponent } from "../../../shared/components/confirmation/confirmation.component";
 import {Router} from "@angular/router";
-import {AuthService} from "../../../auth/services/auth.service";
-import {ISignUp} from "../../../auth/interfaces/ISignUp.interface";
 
 @Component({
   selector: 'app-user',
