@@ -1,11 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { switchMap } from 'rxjs';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AuthService } from 'src/app/auth/services/auth.service';
 import { ErrorHandlerService } from 'src/app/shared/services/errorhandler.service';
 import { UserService } from '../../services/user.service';
 import { IUser } from '../../interfaces/IUser.interface';
-import { ISignUp } from '../../../auth/interfaces/ISignUp.interface';
+import { DialogService } from "../../../shared/services/dialogs/dialog.service";
+import { ConfirmationComponent } from "../../../shared/components/confirmation/confirmation.component";
+import {Router} from "@angular/router";
+import {AuthService} from "../../../auth/services/auth.service";
+import {ISignUp} from "../../../auth/interfaces/ISignUp.interface";
 
 @Component({
   selector: 'app-user',
@@ -15,7 +18,7 @@ import { ISignUp } from '../../../auth/interfaces/ISignUp.interface';
 export class UserComponent implements OnInit {
   currentUser!: IUser;
 
-  signupForm!: FormGroup;
+  updateUserForm!: FormGroup;
 
   hide = true;
 
@@ -23,11 +26,12 @@ export class UserComponent implements OnInit {
     public userService: UserService,
     private fb: FormBuilder,
     private err: ErrorHandlerService,
-    private auth: AuthService,
+    private dialogService: DialogService,
+    private router: Router,
   ) {}
 
   ngOnInit(): void {
-    this.signupForm = this.fb.group({
+    this.updateUserForm = this.fb.group({
       login: ['', Validators.required],
       name: ['', Validators.required],
       password: ['', Validators.required],
@@ -41,19 +45,9 @@ export class UserComponent implements OnInit {
       )
       .subscribe((userData: IUser) => {
         this.currentUser = userData;
-        this.signupForm = this.fb.group({
-          login: [this.currentUser.login, Validators.required],
-          name: [this.currentUser.name, Validators.required],
-          password: ['', Validators.required],
-          repeatpass: ['', Validators.required],
-        });
+        this.updateUserForm.controls['login'].setValue(this.currentUser.login)
+        this.updateUserForm.controls['name'].setValue(this.currentUser.name)
       });
-  }
-
-  changeUserData(updateUser: ISignUp) {
-    this.userService
-      .updateUserById(this.currentUser.id as string, updateUser)
-      .subscribe();
   }
 
   getErrorMessage() {
@@ -61,19 +55,25 @@ export class UserComponent implements OnInit {
   }
 
   onSubmit() {
-    if (!this.signupForm.value) {
+    if (!this.updateUserForm.value) {
       return;
     }
 
-    if (this.signupForm.get('password')?.value !== this.signupForm.get('repeatpass')?.value) {
+    if (this.updateUserForm.get('password')?.value !== this.updateUserForm.get('repeatpass')?.value) {
       this.err.errorHandler('Passwords do not match');
       return;
     }
+    delete this.updateUserForm.value.repeatpass;
 
-    delete this.signupForm.value.repeatpass;
-    this.auth.signup(this.signupForm.value).subscribe(
-      (res) => this.err.errorHandler('Signup success'),
-      (error) => this.err.errorHandler(error.error.message),
-    );
+    const dialogRef = this.dialogService.open(ConfirmationComponent, { data: `update user data?` })
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result && this.currentUser.id) {
+        this.userService.updateUserById(this.currentUser.id, this.updateUserForm.value)
+          .subscribe((response: IUser) => {
+            this.userService.updateUser(response.login)
+            this.router.navigate(['/boards'])
+          })
+      }
+    });
   }
 }
