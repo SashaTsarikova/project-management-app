@@ -1,3 +1,5 @@
-<div #boardItem class="main-container" (click)="goToOneBoard()">
+<div #boardItem class="main-container">
+  <button class="close" (click)="deleteBoard()"><mat-icon>delete</mat-icon></button>
   <p class="title" #boardText>{{board.title}}</p>
+  <button class="open" mat-raised-button (click)="goToOneBoard()" color="warn">Open board</button>
 </div>

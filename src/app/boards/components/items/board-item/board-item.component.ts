@@ -21,19 +21,24 @@ export class BoardItemComponent implements OnInit, AfterViewInit {
 
   @ViewChild('boardItem') boardItem!: ElementRef;
 
+  private color!: string;
+
   constructor(private renderer: Renderer2, private router: Router) {}
 
   ngOnInit(): void {}
 
   ngAfterViewInit() {
+    this.color = getRandomColor();
     this.renderer.setStyle(
       this.boardItem.nativeElement,
       'background-color',
-      getRandomColor()
+      this.color,
     );
   }
 
   goToOneBoard() {
-    this.router.navigate(['boards', this.board.id]);
+    this.router.navigate(['boards', this.board.id], { fragment: this.color });
   }
+
+  deleteBoard() { }
 }
