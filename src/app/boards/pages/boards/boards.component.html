@@ -9,10 +9,13 @@
     </div>
   </div>
   <div class="boards-block">
-    <app-board-item
-      *ngFor="let board of (boards$ | async)"
-      [board]="board">
-    </app-board-item>
+    <ng-container *ngIf="(boards$ | async) as boards">
+      <ng-container *ngFor="let board of boards">
+        <app-board-item
+          [board]="board">
+        </app-board-item>
+      </ng-container>
+    </ng-container>
   </div>
 </section>
 

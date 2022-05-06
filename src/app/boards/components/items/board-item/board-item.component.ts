@@ -32,13 +32,17 @@ export class BoardItemComponent implements OnInit, AfterViewInit {
     this.renderer.setStyle(
       this.boardItem.nativeElement,
       'background-color',
-      this.color,
+      this.color
     );
   }
 
   goToOneBoard() {
-    this.router.navigate(['boards', this.board.id], { fragment: this.color });
+    this.router.navigate(['boards', this.board.id], {
+      state: {
+        color: this.color,
+      },
+    });
   }
 
-  deleteBoard() { }
+  deleteBoard() {}
 }

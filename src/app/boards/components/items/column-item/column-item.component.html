@@ -1,1 +1,39 @@
-<p>column-item works!</p>
+<div #columnItem class="main-container">
+  <button class="close"><mat-icon>delete</mat-icon></button>
+  <div class="column-container" >
+    <div class="title-block" [class.titleInput]="inputShow">
+      <p class="title" (click)="changeTitle()" >{{column.title}}</p>
+      <input class="title-input" type="text" value="{{column.title}}">
+      <button class="button_confirm" (click)="changeTitle()">
+        <mat-icon color="primary">
+          check
+        </mat-icon>
+      </button>
+      <button class="button_reject" (click)="changeTitle()">
+        <mat-icon color="primary">
+          cancel
+        </mat-icon>
+      </button>
+    </div>
+    <div class="column-block">
+      <div class="column-container_tasks">
+        <ng-container *ngIf="(tasks$ | async) as tasks">
+          <ng-container *ngFor="let task of tasks">
+            <app-task-item class="task"
+              [task]="task"
+              [boardId]="boardId"
+              [columnId]="column.id">
+            </app-task-item>
+          </ng-container>
+        </ng-container>
+      </div>
+      <div class="column-container_create">
+        <button class="button_create" #titleItem>
+          <mat-icon color="primary">
+            add
+          </mat-icon>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

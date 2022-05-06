@@ -30,3 +30,22 @@
     padding: 2vmin 0;
   }
 }
+
+@media (max-width: 1024px) and (orientation: landscape){
+  .main-container{
+    min-height: 77vh;
+    .search-block_container{
+      width: 50%;
+    }
+  }
+}
+
+@media (max-width: 768px) and (orientation: portrait){
+  .main-container{
+    min-height: 77vh;
+    .search-block_container{
+    width: 80%;
+  }
+  }
+
+}

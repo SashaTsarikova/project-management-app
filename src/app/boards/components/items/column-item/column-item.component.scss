@@ -1,0 +1,110 @@
+.main-container{
+  width: 300px;
+  max-height: 60vh;
+  display: flex;
+  align-items: stretch;
+  border-radius: 5px;
+  position: relative;
+  flex-direction: column;
+  margin-right: 3vmin;
+  border: 0.8vmin solid;
+  overflow-y: scroll;
+  .close{
+    position: absolute;
+    right: 4%;
+    top: 4%;
+    width: 30px;
+    height: 30px;
+    background-color: transparent;
+    margin: 2%;
+    cursor: pointer;
+    transition: all 0.2s linear;
+    &:hover{
+      transform: rotate(-45deg) translate(6px, 2px);
+    }
+    &:active{
+      transform: rotate(45deg);
+    }
+  }
+}
+.column-container{
+  margin: 1.2vmin;
+  .title-block{
+    padding: 5px;
+    background-color: rgb(240, 249, 242);
+    border-radius: 5px;
+    margin-bottom: 3vmin;
+    .title{
+      width: 80%;
+      font-size: clamp(1rem, 1.5rem, 2rem);
+      font-weight: 700;
+      line-height: clamp(1.1rem, 1.6rem, 2.1rem);
+      letter-spacing: 0.2rem;
+    }
+    .title-input, .button_confirm, .button_reject{
+      display: none;
+    }
+  }
+  .title-block.titleInput{
+    display: flex;
+    .title{
+      display: none;
+    }
+    .title-input, .button_confirm, .button_reject{
+      display: block;
+    }
+    .title-input{
+      width: 65%;
+      font-size: clamp(1rem, 1.5rem, 2rem);
+      line-height: clamp(1.1rem, 1.6rem, 2.1rem);
+      letter-spacing: 0.2rem;
+    }
+  }
+}
+.column-container_tasks{
+  background-color: rgb(240, 249, 242);
+  width: 95%;
+  margin: 0 auto;
+}
+
+.column-container_create{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 2vmin;
+  .button_create{
+    background-color: rgba($color: #47c383, $alpha: 0.8);
+    width: 5vh;
+    height: 5vh;
+    border-radius: 4px;
+    transition: all 0.2s linear;
+    &:hover{
+      background-color: rgba($color: #47c383, $alpha: 1);
+      box-shadow: 0 0 2px rgba(0,0,0,0.75);
+    }
+    &:active{
+      box-shadow: 0 0 2px rgba(107, 104, 104, 0.75);
+      transform: scale(0.95);
+    }
+  }
+}
+
+@media (max-width: 1024px) and (orientation: landscape){
+  .main-container{
+    .column-container_create{
+      .button_create{
+        width: 10vh;
+        height: 10vh;
+      }
+    }
+  }
+}
+
+@media (max-width: 1024px) and (orientation: portrait){
+  .main-container{
+
+    width: 280px;
+    align-items: center;
+    justify-content: center;
+  }
+}
