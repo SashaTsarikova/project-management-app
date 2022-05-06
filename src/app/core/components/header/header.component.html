@@ -1,7 +1,7 @@
 <header class="header" (scroll)="onScroll()" [ngClass]="headerFixed?'fixed':'nofixed'">
   <div class="main-container">
     <div class="folder-lang-container">
-      <button class="folder-icon" [ngStyle]="{'visibility': isLoggedIn ? 'visible' : 'hidden'}" mat-button color="primary" aria-label="create folder icon">
+      <button class="folder-icon" (click)="createNewBoard()" [ngStyle]="{'visibility': isLoggedIn ? 'visible' : 'hidden'}" mat-button color="primary" aria-label="create folder icon">
         {{'HEADER.CREATE' | translate}} <mat-icon >create_new_folder</mat-icon>
       </button>
       <mat-form-field>

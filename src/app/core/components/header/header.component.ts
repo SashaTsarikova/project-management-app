@@ -1,6 +1,8 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
+import { DialogService } from 'src/app/shared/services/dialogs/dialog.service';
+import { CreateNewBoardComponent } from 'src/app/shared/components/create-new-board/create-new-board.component';
 
 @Component({
   selector: 'app-header',
@@ -23,7 +25,7 @@ export class HeaderComponent implements OnInit {
     }
   }
 
-  constructor(public translate: TranslateService, private router: Router) { }
+  constructor(public translate: TranslateService, private router: Router, private dialog: DialogService) { }
 
   ngOnInit(): void { }
 
@@ -43,5 +45,9 @@ export class HeaderComponent implements OnInit {
 
   goToUser() {
     this.router.navigate(['user']);
+  }
+
+  createNewBoard() {
+    const dialogRef = this.dialog.open(CreateNewBoardComponent);
   }
 }

@@ -1,0 +1,14 @@
+<div class="wrapper">
+  <p>Enter name for a new board</p>
+</div>
+<form class="title-form" [formGroup]="titleForm" (submit)="onSubmit()">
+  <mat-form-field class="example-full-width" appearance="outline">
+    <mat-label>Board title</mat-label>
+    <input matInput formControlName="title" placeholder="Board title">
+    <mat-error *ngIf="titleForm.get('title')?.hasError('required')">{{getErrorMessage()}}</mat-error>
+  </mat-form-field>
+</form>
+<div class="title-form_buttons">
+  <button (click)="reject()" mat-raised-button color="accent">Cancel</button>
+  <button type="submit" mat-raised-button color="primary">Сreate</button>
+</div>

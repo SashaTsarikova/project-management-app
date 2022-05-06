@@ -5,6 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { TranslateModule } from '@ngx-translate/core';
 import { ConfirmationComponent } from './components/confirmation/confirmation.component';
 import { MaterialModule } from './material/material.module';
+import { CreateNewBoardComponent } from './components/create-new-board/create-new-board.component';
 
 const MODULES = [
   CommonModule,
@@ -16,7 +17,7 @@ const MODULES = [
 ];
 
 @NgModule({
-  declarations: [ConfirmationComponent],
+  declarations: [ConfirmationComponent, CreateNewBoardComponent],
   imports: MODULES,
   exports: MODULES,
 })
