@@ -1,6 +1,22 @@
-<p>boards works!</p>
+<section class="main-container colored-bg">
+  <div class="search-block">
+    <div class="search-block_container">
+      <mat-form-field appearance="fill" class="search-input" color="accent">
+        <mat-icon matPrefix>search</mat-icon>
+        <mat-label>Input search params</mat-label>
+        <input matInput placeholder="" autocomplete="off">
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="boards-block">
+    <app-board-item
+      *ngFor="let board of (boards$ | async)"
+      [board]="board">
+    </app-board-item>
+  </div>
+</section>
 
-<form [formGroup]="boardForm" (ngSubmit)="onSubmit()">
+<!-- <form [formGroup]="boardForm" (ngSubmit)="onSubmit()">
   <input type="text" formControlName="title">
   <button type="submit">Create</button>
-</form>
+</form> -->

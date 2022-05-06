@@ -2,7 +2,7 @@
   <div class="main-container">
     <div class="folder-lang-container">
       <button class="folder-icon" [ngStyle]="{'visibility': isLoggedIn ? 'visible' : 'hidden'}" mat-button color="primary" aria-label="create folder icon">
-        <mat-icon >create_new_folder</mat-icon>
+        {{'HEADER.CREATE' | translate}} <mat-icon >create_new_folder</mat-icon>
       </button>
       <mat-form-field>
         <mat-select placeholder="{{'LANGUAGES.PLACEHOLDER' | translate}}" >
