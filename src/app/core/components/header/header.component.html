@@ -20,7 +20,7 @@
         <button mat-button color="warn" aria-label="icon edit" (click)="goToUser()">
           <mat-icon>edit</mat-icon>
         </button>
-        <p class="title">{{ userName }}</p>
+        <p class="title">{{ userName | async}}</p>
       </div>
       <div class="auth-container_buttons">
         <button class="button" mat-stroked-button color="primary" (click)="goToLogin()">

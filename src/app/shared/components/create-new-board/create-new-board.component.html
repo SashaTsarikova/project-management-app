@@ -10,5 +10,5 @@
 </form>
 <div class="title-form_buttons">
   <button (click)="reject()" mat-raised-button color="accent">Cancel</button>
-  <button type="submit" mat-raised-button color="primary">Сreate</button>
+  <button (click)="confirm()" type="submit" [disabled]="titleForm.invalid" mat-raised-button color="primary">Сreate</button>
 </div>
