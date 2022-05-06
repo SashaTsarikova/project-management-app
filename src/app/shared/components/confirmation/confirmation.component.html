@@ -1,1 +1,9 @@
-<p>confirmation works!</p>
+
+<div class="wrapper">
+  <p>are you sure to delete {{data}}</p>
+</div>
+
+<div>
+  <button mat-button (click)="reject()">No</button>
+  <button mat-button (click)="confirm()" cdkFocusInitial>Yes</button>
+</div>
