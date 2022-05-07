@@ -17,17 +17,6 @@ export class BoardsComponent implements OnInit {
   constructor(private boardsService: BoardsService, private fb: FormBuilder) {}
 
   ngOnInit(): void {
-    // this.boardForm = this.fb.group({
-    //   title: ['', Validators.required],
-    // });
     this.boards$ = this.boardsService.getAllBoards();
   }
-
-  // onSubmit() {
-  //   this.boardsService
-  //     .createBoard(this.boardForm.value)
-  //     .subscribe((board) => console.log(board));
-  // }
-
-  // onColumnSubmit() {}
 }
