@@ -44,7 +44,14 @@
     "ERROR" : "Вы должны ввести значение"
   },
   "BOARD_FORM": {},
-  "COLUMN_FORM": {},
+  "COLUMN_FORM": {
+    "ENTER_COLUMN_NAME" : "Введите название для новой колонки",
+    "COLUMN_TITLE" : "Название колонки",
+    "CANCEL" : "Отмена",
+    "CREATE" : "Создать",
+    "ERROR" : "Вы должны ввести значение",
+    "COLUMN_ORDER" : "Порядковый номер"
+  },
   "TASK_FORM": {},
   "USER": {},
   "CONFIRMATION": {},
