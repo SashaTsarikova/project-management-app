@@ -28,8 +28,8 @@ export class UserService {
     return this.http.delete(`${PATH}/users/${userId}`)
   }
 
-  updateUserById(userId: string, updateUser: ISignUp) {
-    return this.http.put(`${PATH}/users/${userId}`, updateUser)
+  updateUserById(userId: string, updateUser: ISignUp): Observable<IUser> {
+    return this.http.put<ISignUp>(`${PATH}/users/${userId}`, updateUser)
   }
 
   currentUserId() {
@@ -38,4 +38,9 @@ export class UserService {
         map(users => users.find(user => user.login === this.auth.currentUserValue)?.id)
       )
   }
+
+  updateUser(login: string) {
+    this.auth.setCurrentUser(login)
+  }
+
 }

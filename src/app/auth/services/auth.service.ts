@@ -17,9 +17,9 @@ export class AuthService {
   userToken: BehaviorSubject<string> = new BehaviorSubject<string>(localStorage.getItem('token') || '')
 
   constructor(
-      private http: HttpClient,
-      private router: Router
-      ) {}
+    private http: HttpClient,
+    private router: Router
+    ) {}
 
   get currentUserValue(): any {
     return this.currentUserSubject.value;
@@ -31,17 +31,16 @@ export class AuthService {
   }
 
   login(loginUser: ILogin) {
-    localStorage.setItem('currentUser', loginUser.login)
-    this.currentUserSubject.next(loginUser.login)
-
-    return this.http.post(`${PATH}/signin`, loginUser)
-      .pipe(
-        tap((token: any) => {
-            this.userToken.next(token.token);
-            localStorage.setItem('token', token.token)
-        }),
-        switchMap(() => this.router.navigate(['boards']))
-      )
+  localStorage.setItem('currentUser', loginUser.login)
+  this.currentUserSubject.next(loginUser.login)
+  return this.http.post(`${PATH}/signin`, loginUser)
+    .pipe(
+      tap((token: any) => {
+          this.userToken.next(token.token);
+          localStorage.setItem('token', token.token)
+      }),
+      switchMap(() => this.router.navigate(['boards']))
+    )
   }
 
   signup(signupUser: ISignUp) {
@@ -55,5 +54,10 @@ export class AuthService {
           return this.login(user)
         })
       );
+  }
+
+  setCurrentUser(userLogin: string) {
+    localStorage.setItem('currentUser', userLogin)
+    this.currentUserSubject.next(userLogin)
   }
 }
