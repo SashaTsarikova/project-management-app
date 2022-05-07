@@ -21,10 +21,6 @@ export class CreateNewBoardComponent implements OnInit {
     });
   }
 
-  /* confirm() {
-    this.dialogRef.close(true);
-  } */
-
   reject() {
     this.dialogRef.close(false);
   }
@@ -35,9 +31,12 @@ export class CreateNewBoardComponent implements OnInit {
 
   onSubmit() {
     if (!this.titleForm.value) {
-      this.dialogRef.close(true);
-    } else {
-      
+      return
     }
+    this.dialogRef.close(this.titleForm.value);
+  }
+
+  confirm() {
+    this.onSubmit()
   }
 }
