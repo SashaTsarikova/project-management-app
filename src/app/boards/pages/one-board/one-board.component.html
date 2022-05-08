@@ -1,3 +1,38 @@
 <section class="main-container colored-bg">
-
+  <div class="one-board-container">
+    <div class="back-container">
+      <button mat-fab class="button_back" (click)="goToBoards()">
+        <mat-icon>
+          keyboard_arrow_left
+        </mat-icon>
+      </button>
+    </div>
+    <div class="board-container">
+      <div class="title-block">
+        <ng-container *ngIf="(board$ | async) as board">
+          <p class="title">{{board.title}}</p>
+        </ng-container>
+      </div>
+      <div class="board-block">
+        <div class="board-container_create">
+          <button class="button_create">
+            <mat-icon color="primary">
+              add
+            </mat-icon>
+          </button>
+        </div>
+        <div class="board-container_columns">
+          <ng-container *ngIf="(columns$ | async) as columns">
+            <ng-container *ngFor="let column of columns">
+              <app-column-item
+                [column]="column"
+                [color]="color"
+                [boardId]="boardId">
+              </app-column-item>
+            </ng-container>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>

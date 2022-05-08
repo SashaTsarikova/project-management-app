@@ -10,12 +10,9 @@ import { BoardsService } from '../../services/boards.service';
 export class BoardsComponent implements OnInit {
   boardForm!: FormGroup;
 
-  constructor(
-    public boardsService: BoardsService
-  ) {}
+  constructor(public boardsService: BoardsService) {}
 
   ngOnInit(): void {
     this.boardsService.updateBoards();
   }
-
 }
