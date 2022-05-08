@@ -1,4 +1,4 @@
-<div #columnItem class="main-container">
+<div appAddBoarderColor [borderColor]="color" class="main-container">
   <button class="close"><mat-icon>delete</mat-icon></button>
   <div class="column-container" >
     <div class="title-block" [class.titleInput]="inputShow">
@@ -28,7 +28,7 @@
         </ng-container>
       </div>
       <div class="column-container_create">
-        <button class="button_create" #titleItem>
+        <button class="button_create">
           <mat-icon color="primary">
             add
           </mat-icon>

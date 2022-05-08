@@ -46,7 +46,7 @@
 @media (max-width: 1024px) and (orientation: landscape){
   .main-container{
     width: 320px;
-    align-items: center;
+    align-self: center;
     justify-content: center;
   }
 }

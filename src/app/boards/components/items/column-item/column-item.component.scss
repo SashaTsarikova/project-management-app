@@ -9,10 +9,11 @@
   margin-right: 3vmin;
   border: 0.8vmin solid;
   overflow-y: scroll;
+  overflow-x: hidden;
   .close{
     position: absolute;
-    right: 4%;
-    top: 4%;
+    right: 6%;
+    top: 0.5vmin;
     width: 30px;
     height: 30px;
     background-color: transparent;
@@ -28,7 +29,8 @@
   }
 }
 .column-container{
-  margin: 1.2vmin;
+  margin: auto 1.2vmin;
+  width: 90%;
   .title-block{
     padding: 5px;
     background-color: rgb(240, 249, 242);
@@ -62,7 +64,6 @@
   }
 }
 .column-container_tasks{
-  background-color: rgb(240, 249, 242);
   width: 95%;
   margin: 0 auto;
 }

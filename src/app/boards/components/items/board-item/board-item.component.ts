@@ -1,12 +1,4 @@
-import {
-  AfterViewInit,
-  Component,
-  ElementRef,
-  Input,
-  OnInit,
-  Renderer2,
-  ViewChild,
-} from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { IBoard } from 'src/app/boards/interfaces/IBoard.interface';
 import getRandomColor from 'src/app/boards/utils/colorGenerator';
@@ -19,35 +11,25 @@ import { BoardsService } from '../../../services/boards.service';
   templateUrl: './board-item.component.html',
   styleUrls: ['./board-item.component.scss'],
 })
-export class BoardItemComponent implements OnInit, AfterViewInit {
+export class BoardItemComponent implements OnInit {
   @Input() public board!: IBoard;
 
-  @ViewChild('boardItem') boardItem!: ElementRef;
-
-  private color!: string;
+  public bgColor: string = '';
 
   constructor(
-    private renderer: Renderer2,
     private router: Router,
     private dialogService: DialogService,
     private boardsService: BoardsService
   ) {}
 
-  ngOnInit(): void {}
-
-  ngAfterViewInit() {
-    this.color = getRandomColor();
-    this.renderer.setStyle(
-      this.boardItem.nativeElement,
-      'background-color',
-      this.color
-    );
+  ngOnInit(): void {
+    this.bgColor = getRandomColor();
   }
 
   goToOneBoard() {
     this.router.navigate(['boards', this.board.id], {
       state: {
-        color: this.color,
+        color: this.bgColor,
       },
     });
   }
