@@ -36,8 +36,22 @@
   },
   "AUTH": {},
   "BOARDS": {},
+  "CREATE_NEW_BOARD": {
+    "ENTER_BOARD_NAME" : "Enter name for a new board",
+    "BOARD_TITLE" : "Board title",
+    "CANCEL" : "Cancel",
+    "CREATE" : "Сreate",
+    "ERROR" : "You must enter a value"
+  },
   "BOARD_FORM": {},
-  "COLUMN_FORM": {},
+  "COLUMN_FORM": {
+    "ENTER_COLUMN_NAME" : "Enter name for a new column",
+    "COLUMN_TITLE" : "Column title",
+    "CANCEL" : "Cancel",
+    "CREATE" : "Сreate",
+    "ERROR" : "You must enter a value",
+    "COLUMN_ORDER" : "Column order"
+  },
   "TASK_FORM": {},
   "USER": {},
   "CONFIRMATION": {},

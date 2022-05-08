@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { TranslateService } from '@ngx-translate/core';
 import { DialogRef } from '../../services/dialogs/dialogRef';
 
 @Component({
@@ -13,6 +14,7 @@ export class CreateNewBoardComponent implements OnInit {
   constructor(
     private dialogRef: DialogRef,
     private fb: FormBuilder,
+    public translate: TranslateService,
   ) { }
 
   ngOnInit(): void {
@@ -25,18 +27,14 @@ export class CreateNewBoardComponent implements OnInit {
     this.dialogRef.close(false);
   }
 
-  getErrorMessage() {
-    return 'You must enter a value';
-  }
-
   onSubmit() {
     if (!this.titleForm.value) {
-      return
+      return;
     }
     this.dialogRef.close(this.titleForm.value);
   }
 
   confirm() {
-    this.onSubmit()
+    this.onSubmit();
   }
 }
