@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Observable, Subscription } from 'rxjs';
-import { IBoard } from '../../interfaces/IBoard.interface';
+import { FormGroup } from '@angular/forms';
 import { BoardsService } from '../../services/boards.service';
 
 @Component({
@@ -12,22 +10,9 @@ import { BoardsService } from '../../services/boards.service';
 export class BoardsComponent implements OnInit {
   boardForm!: FormGroup;
 
-  boards$!: Observable<IBoard[]>;
-
-  constructor(private boardsService: BoardsService, private fb: FormBuilder) {}
+  constructor(public boardsService: BoardsService) {}
 
   ngOnInit(): void {
-    // this.boardForm = this.fb.group({
-    //   title: ['', Validators.required],
-    // });
-    this.boards$ = this.boardsService.getAllBoards();
+    this.boardsService.updateBoards();
   }
-
-  // onSubmit() {
-  //   this.boardsService
-  //     .createBoard(this.boardForm.value)
-  //     .subscribe((board) => console.log(board));
-  // }
-
-  // onColumnSubmit() {}
 }

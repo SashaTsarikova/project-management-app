@@ -42,3 +42,19 @@
     }
   }
 }
+
+@media (max-width: 1024px) and (orientation: landscape){
+  .main-container{
+    width: 320px;
+    align-self: center;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 768px) and (orientation: portrait){
+  .main-container{
+    width: 280px;
+    align-items: center;
+    justify-content: center;
+  }
+}

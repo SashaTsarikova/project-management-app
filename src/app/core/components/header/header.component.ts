@@ -3,6 +3,9 @@ import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { DialogService } from 'src/app/shared/services/dialogs/dialog.service';
 import { CreateNewBoardComponent } from 'src/app/shared/components/create-new-board/create-new-board.component';
+import {BoardsService} from "../../../boards/services/boards.service";
+import {AuthService} from "../../../auth/services/auth.service";
+
 
 @Component({
   selector: 'app-header',
@@ -10,24 +13,26 @@ import { CreateNewBoardComponent } from 'src/app/shared/components/create-new-bo
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
-  public userName = '';
+  public userName = this.auth.currentUser$;
 
   public isLoggedIn = true;
 
-  public headerFixed:boolean = false;
+  public headerFixed = false;
 
   @HostListener('window:scroll', ['$event.target'])
   onScroll(): void {
-    if (window.scrollY > 10) {
-      this.headerFixed = true;
-    } else {
-      this.headerFixed = false;
-    }
+    window.scrollY > 10 ? this.headerFixed = true : this.headerFixed = false;
   }
 
-  constructor(public translate: TranslateService, private router: Router, private dialog: DialogService) { }
+  constructor(
+    public translate: TranslateService,
+    private router: Router,
+    private dialog: DialogService,
+    private boardsService: BoardsService,
+    private auth: AuthService
+  ) { }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {}
 
   changeLang(lang: string) {
     if (lang) {
@@ -48,6 +53,11 @@ export class HeaderComponent implements OnInit {
   }
 
   createNewBoard() {
-    const dialogRef = this.dialog.open(CreateNewBoardComponent);
+    const dialogRef = this.dialog.open(CreateNewBoardComponent)
+      dialogRef.afterClosed().subscribe((result) => {
+        if (result) {
+          this.boardsService.createBoard(result).subscribe(() => this.boardsService.updateBoards())
+        }
+      })
   }
 }

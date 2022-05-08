@@ -1,0 +1,43 @@
+.main-container{
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin: 2vmin auto;
+  background-color: rgb(240, 249, 242);
+  padding: 0 2%;
+
+  .close{
+    width: 30px;
+    height: 30px;
+    background-color: transparent;
+    cursor: pointer;
+    transition: all 0.2s linear;
+    &:hover{
+      transform: rotate(90deg);
+    }
+    &:active{
+      transform: rotate(90deg) scale(0.8);
+    }
+  }
+  .title-container{
+    width: 85%;
+    p{
+      margin: 0;
+    }
+    .title{
+      font-size: clamp(0.8rem, 1.2rem, 1.4rem);
+      font-weight: 700;
+      line-height: clamp(1.1rem, 1.6rem, 2.1rem);
+      letter-spacing: 0.2rem;
+    }
+    .sub-title{
+      font-size: clamp(0.7rem, 1.1rem, 1.3rem);
+      font-weight: 300;
+      line-height: clamp(0.7rem, 1.2rem, 1.5rem);
+      color: rgba(57, 56, 60, 0.908);
+      margin-left: 5%;
+      padding-bottom: 1.5vmin;
+    }
+  }
+}
+
