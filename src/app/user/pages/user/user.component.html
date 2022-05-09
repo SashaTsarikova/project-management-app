@@ -1,24 +1,24 @@
 <section class="main-container colored-bg">
   <div class="edit-container edit-form">
     <div class="edit_greeting">
-      <p>update your profile</p>
+      <p>{{"USER.TITLE" | translate}}</p>
     </div>
     <form [formGroup]="updateUserForm" (submit)="onSubmit()">
       <mat-form-field appearance="outline">
-        <mat-label>Enter your name</mat-label>
+        <mat-label>{{"USER.NAME" | translate}}</mat-label>
         <input matInput formControlName="name">
         <mat-error *ngIf="updateUserForm.get('name')?.hasError('required')">{{getErrorMessage()}}</mat-error>
       </mat-form-field>
       <div class="email-container">
         <mat-form-field appearance="outline">
-          <mat-label>Enter your login</mat-label>
+          <mat-label>{{"USER.LOGIN" | translate}}</mat-label>
           <input matInput type="text" placeholder="login" formControlName="login" required>
           <mat-error *ngIf="updateUserForm.get('login')?.hasError('required')">{{getErrorMessage()}}</mat-error>
         </mat-form-field>
       </div>
       <div class="password-container">
         <mat-form-field appearance="outline">
-          <mat-label>Enter your password</mat-label>
+          <mat-label>{{"USER.PASSWORD" | translate}}</mat-label>
           <input matInput [type]="hide ? 'password' : 'text'" formControlName="password">
           <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
             <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
@@ -28,7 +28,7 @@
       </div>
       <div class="password-container">
         <mat-form-field appearance="outline">
-          <mat-label>Repeat your password</mat-label>
+          <mat-label>{{"USER.REPASS" | translate}}</mat-label>
           <input matInput [type]="hide ? 'password' : 'text'" formControlName="repeatpass">
           <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
             <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
@@ -36,7 +36,7 @@
           <mat-error *ngIf="updateUserForm.get('repeatpass')?.hasError('required')">{{getErrorMessage()}}</mat-error>
         </mat-form-field>
       </div>
-      <button type="submit" [disabled]="updateUserForm.invalid" class="edit_button" mat-raised-button color="primary">Update</button>
+      <button type="submit" [disabled]="updateUserForm.invalid" class="edit_button" mat-raised-button color="primary">{{"USER.BUTTON" | translate}}</button>
     </form>
   </div>
 </section> <div class="edit-form">

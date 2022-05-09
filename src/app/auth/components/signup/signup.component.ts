@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { TranslateService } from '@ngx-translate/core';
 import { ErrorHandlerService } from '../../../shared/services/errorhandler.service';
 import { AuthService } from '../../services/auth.service';
 
@@ -17,6 +18,7 @@ export class SignupComponent implements OnInit {
     private fb: FormBuilder,
     private err: ErrorHandlerService,
     private auth: AuthService,
+    public translate: TranslateService,
   ) { }
 
   ngOnInit(): void {
@@ -29,7 +31,7 @@ export class SignupComponent implements OnInit {
   }
 
   getErrorMessage() {
-    return 'You must enter a value';
+    return this.translate.instant('USER.REQUIRED');
   }
 
   onSubmit() {
@@ -38,13 +40,13 @@ export class SignupComponent implements OnInit {
     }
 
     if (this.signupForm.get('password')?.value !== this.signupForm.get('repeatpass')?.value) {
-      this.err.errorHandler('Passwords do not match');
+      this.err.errorHandler(this.translate.instant('USER.NOT-MATCH'));
       return;
     }
 
     delete this.signupForm.value.repeatpass;
     this.auth.signup(this.signupForm.value).subscribe(
-      (res) => this.err.errorHandler('Signup success'),
+      (res) => this.err.errorHandler(this.translate.instant('AUTH.LOGIN.SUCCESS')),
       (error) => this.err.errorHandler(error.error.message)
     );
   }
