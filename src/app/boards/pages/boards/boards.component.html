@@ -10,9 +10,10 @@
   </div>
   <div class="boards-block">
     <ng-container *ngIf="(boardsService.allBoards$ | async) as boards">
-      <ng-container *ngFor="let board of boards">
+      <ng-container *ngFor="let board of boards; let i = index">
         <app-board-item
-          [board]="board">
+          [board]="board"
+          [index]="i">
         </app-board-item>
       </ng-container>
     </ng-container>
