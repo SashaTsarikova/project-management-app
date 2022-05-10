@@ -22,7 +22,8 @@
     }
   },
   "HEADER": {
-    "CREATE":"Create"
+    "CREATE":"Create",
+    "MAIN": "Main"
   },
   "FOOTER": {
     "GRIGORII" : "Grogirii Iavorskii",
