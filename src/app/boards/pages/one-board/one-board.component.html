@@ -15,21 +15,21 @@
       </div>
       <div class="board-block">
         <div class="board-container_create">
-          <button class="button_create">
+          <button class="button_create" (click)="createColumn()">
             <mat-icon color="primary">
               add
             </mat-icon>
           </button>
         </div>
-        <div class="board-container_columns">
-          <ng-container *ngIf="(columns$ | async) as columns">
-            <ng-container *ngFor="let column of columns">
+        <div class="board-container_columns" cdkDropList cdkDropListOrientation="horizontal" (cdkDropListDropped)="drop($event)">
+          <ng-container *ngIf="(boardsService.allColumns$ | async) as columns">
+            <div class="column-item" *ngFor="let column of columns" cdkDrag>
               <app-column-item
                 [column]="column"
                 [color]="color"
                 [boardId]="boardId">
               </app-column-item>
-            </ng-container>
+            </div>
           </ng-container>
         </div>
       </div>

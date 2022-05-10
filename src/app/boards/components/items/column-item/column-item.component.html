@@ -1,34 +1,34 @@
 <div appAddBoarderColor [borderColor]="color" class="main-container">
-  <button class="close"><mat-icon>delete</mat-icon></button>
+  <button class="close" (click)="removeColumn()"><mat-icon>delete</mat-icon></button>
   <div class="column-container" >
+    <form [formGroup]="columnForm" (submit)="confirmChangeTitle()">
     <div class="title-block" [class.titleInput]="inputShow">
-      <p class="title" (click)="changeTitle()" >{{column.title}}</p>
-      <input class="title-input" type="text" value="{{column.title}}">
-      <button class="button_confirm" (click)="changeTitle()">
-        <mat-icon color="primary">
-          check
-        </mat-icon>
-      </button>
-      <button class="button_reject" (click)="changeTitle()">
-        <mat-icon color="primary">
-          cancel
-        </mat-icon>
-      </button>
+      <p class="title" (click)="changeTitleMenu()" >{{column.title}}</p>
+        <input class="title-input" type="text" value="{{column.title}}" formControlName="title">
+        <button class="button_confirm" type="submit">
+          <mat-icon color="primary">
+            check
+          </mat-icon>
+        </button>
+        <button class="button_reject" (click)="cancelChangeTitle()">
+          <mat-icon color="primary">
+            cancel
+          </mat-icon>
+        </button>
     </div>
+  </form>
     <div class="column-block">
       <div class="column-container_tasks">
-        <ng-container *ngIf="(tasks$ | async) as tasks">
-          <ng-container *ngFor="let task of tasks">
+          <ng-container *ngFor="let task of tasks || []">
             <app-task-item class="task"
               [task]="task"
               [boardId]="boardId"
               [columnId]="column.id">
             </app-task-item>
           </ng-container>
-        </ng-container>
       </div>
       <div class="column-container_create">
-        <button class="button_create">
+        <button class="button_create" (click)="createTask()">
           <mat-icon color="primary">
             add
           </mat-icon>
