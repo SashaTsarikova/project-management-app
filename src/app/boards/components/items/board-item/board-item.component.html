@@ -1,5 +1,6 @@
 <div appAddBg [bgColor]="bgColor" class="main-container">
   <button class="close" (click)="deleteBoard()"><mat-icon>delete</mat-icon></button>
   <p class="title" #boardText>{{board.title}}</p>
+  <p class="description" #boardText>{{board.description}}</p>
   <button class="open" mat-raised-button (click)="goToOneBoard()" color="warn">{{"BOARDS.BUTTON" | translate}}</button>
 </div>

@@ -4,11 +4,11 @@ import { TranslateService } from '@ngx-translate/core';
 import { DialogRef } from '../../services/dialogs/dialogRef';
 
 @Component({
-  selector: 'app-create-new-board',
-  templateUrl: './create-new-board.component.html',
-  styleUrls: ['./create-new-board.component.scss'],
+  selector: 'app-create-new-column',
+  templateUrl: './create-new-column.component.html',
+  styleUrls: ['./create-new-column.component.scss'],
 })
-export class CreateNewBoardComponent implements OnInit {
+export class CreateNewColumnComponent implements OnInit {
   titleForm!: FormGroup;
 
   constructor(
@@ -20,7 +20,6 @@ export class CreateNewBoardComponent implements OnInit {
   ngOnInit(): void {
     this.titleForm = this.fb.group({
       title: ['', Validators.required],
-      description: ['', Validators.required]
     });
   }
 
