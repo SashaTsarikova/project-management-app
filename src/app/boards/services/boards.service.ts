@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {ErrorHandlerService} from "../../shared/services/errorhandler.service";
 import {PATH} from "../../auth/models/base-path";
@@ -60,7 +60,7 @@ export class BoardsService {
   }
 
   createColumn(boardId: string, createColumn: IColumn) {
-    return this.http.post(`${PATH}/boards/${boardId}/columns/`, createColumn)
+    return this.http.post(`${PATH}/boards/${boardId}/columns`, createColumn)
   }
 
   getColumnById(boardId: string, columnId: string) {
@@ -75,9 +75,21 @@ export class BoardsService {
     return this.http.put(`${PATH}/boards/${boardId}/columns/${columnId}`, updateColumn)
   }
 
+  calculateColumnOrder() {
+    if(!this.allColumnsSubject.value.length) {
+      return 0
+    }
+    let order = this.allColumnsSubject.value.reduce((acc, curr) => acc.order > curr.order ? acc : curr)
+    let count = order.order
+    count += 1;
+    return count;
+  }
+
   //Tasks
   updateTasks(boardId: string, columnId: string) {
-    this.getAllTasks(boardId, columnId).subscribe(res => this.allColumnsSubject.next(res))
+    this.getAllTasks(boardId, columnId).subscribe(res => {
+      this.allColumnsSubject.next(res)
+    })
   }
 
   getAllTasks(boardId: string, columnId: string): Observable<ITask[]> {
@@ -98,5 +110,22 @@ export class BoardsService {
 
   updateTaskById(boardId: string, columnId: string, taskId: string, updateTask: ITask) {
     return this.http.put(`${PATH}/boards/${boardId}/columns/${columnId}/tasks/${taskId}`, updateTask)
+  }
+
+  calculateTaskOrder() {
+    if(!this.allTasksSubject.value.length) {
+      return 0
+    }
+    let order = this.allTasksSubject.value.reduce((acc, curr) => acc.order > curr.order ? acc : curr)
+    let count = order.order
+    count += 1;
+    return count;
+  }
+
+  findColumns(prevPos: number, currPos: number) {
+    return {
+      prevColumn: this.allColumnsSubject.value.find(column => column.order === prevPos),
+      currColumn: this.allColumnsSubject.value.find(column => column.order === currPos)
+    }
   }
 }

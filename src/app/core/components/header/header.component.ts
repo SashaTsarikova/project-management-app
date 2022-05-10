@@ -55,8 +55,9 @@ export class HeaderComponent implements OnInit {
   createNewBoard() {
     const dialogRef = this.dialog.open(CreateNewBoardComponent)
       dialogRef.afterClosed().subscribe((result) => {
+
         if (result) {
-          this.boardsService.createBoard(result).subscribe(() => this.boardsService.updateBoards())
+          this.boardsService.createBoard(result).subscribe((res) => this.boardsService.updateBoards())
         }
       })
   }

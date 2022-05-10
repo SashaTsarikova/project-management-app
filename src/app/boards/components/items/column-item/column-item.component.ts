@@ -3,9 +3,14 @@ import {
   Input,
   OnInit,
 } from '@angular/core';
-import { Observable } from 'rxjs';
 import { IColumn } from 'src/app/boards/interfaces/IColumn.interface';
 import { BoardsService } from 'src/app/boards/services/boards.service';
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {DialogService} from "../../../../shared/services/dialogs/dialog.service";
+import {ConfirmationComponent} from "../../../../shared/components/confirmation/confirmation.component";
+import {CreateNewTaskComponent} from "../../../../shared/components/create-new-task/create-new-task.component";
+import {ITask} from "../../../interfaces/ITask.interface";
+import {UserService} from "../../../../user/services/user.service";
 
 @Component({
   selector: 'app-column-item',
@@ -19,24 +24,81 @@ export class ColumnItemComponent implements OnInit {
 
   @Input() public boardId!: string;
 
-  public inputShow: boolean = false;
+  public inputShow = false;
 
-  public tasks$!: Observable<any>;
+  columnForm!: FormGroup;
 
-  constructor(private boardsService: BoardsService) {}
+  tasks!: any;
+
+  currentUserId!: string | undefined;
+
+  constructor(
+    public boardsService: BoardsService,
+    private fb: FormBuilder,
+    private dialogService: DialogService,
+    private userService: UserService
+  ) {}
 
   ngOnInit(): void {
-    this.tasks$ = this.boardsService.getAllTasks(
-      this.boardId,
-      <string> this.column.id,
-    );
+    this.columnForm = this.fb.group({
+      title: [this.column.title, [Validators.required]]
+    })
+    this.userService.currentUserId().subscribe((userId) => this.currentUserId = userId)
+   this.boardsService.getAllTasks(this.boardId, <string>this.column.id).subscribe(el => this.tasks = el)
   }
 
-  changeTitle() {
-    if (this.inputShow) {
-      this.inputShow = false;
-    } else {
-      this.inputShow = true;
+  changeTitleMenu() {
+    this.inputShow = !this.inputShow
+  }
+
+  confirmChangeTitle() {
+    if (!this.boardId || !this.column.id || this.columnForm.invalid) {
+      return;
     }
+
+    const updateColumn = {
+      title: this.columnForm.controls['title'].value,
+      order: this.column.order
+    }
+    this.boardsService.updateColumnById(this.boardId, this.column.id, updateColumn)
+      .subscribe(() => {
+        this.boardsService
+          .updateColumns(this.boardId)
+        this.inputShow = false;
+    })
+  }
+
+  cancelChangeTitle() {
+    this.inputShow = false;
+  }
+
+  removeColumn() {
+    this.dialogService.open(ConfirmationComponent,  {data: `delete Column ${this.column.title}`})
+      .afterClosed()
+      .subscribe(result => {
+        if (result) {
+          this.boardsService
+            .deleteColumnById(this.boardId, <string>this.column.id)
+            .subscribe(() => this.boardsService
+              .updateColumns(this.boardId))
+        }
+    })
+  }
+
+  createTask() {
+    this.dialogService.open(CreateNewTaskComponent)
+      .afterClosed()
+        .subscribe(result => {
+          const newTask: ITask = {
+            title: result.title,
+            done: false,
+            description: result.description,
+            order: this.boardsService.calculateTaskOrder(),
+            userId: <string>this.currentUserId
+          }
+          this.boardsService.createTask(this.boardId, <string>this.column.id, newTask)
+            .subscribe(() => this.boardsService.getAllTasks(this.boardId, <string>this.column.id)
+              .subscribe(el => this.tasks = el))
+    })
   }
 }

@@ -4,11 +4,11 @@ import { TranslateService } from '@ngx-translate/core';
 import { DialogRef } from '../../services/dialogs/dialogRef';
 
 @Component({
-  selector: 'app-create-new-board',
-  templateUrl: './create-new-board.component.html',
-  styleUrls: ['./create-new-board.component.scss'],
+  selector: 'app-create-new-task',
+  templateUrl: './create-new-task.component.html',
+  styleUrls: ['./create-new-task.component.scss'],
 })
-export class CreateNewBoardComponent implements OnInit {
+export class CreateNewTaskComponent implements OnInit {
   titleForm!: FormGroup;
 
   constructor(

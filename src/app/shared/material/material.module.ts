@@ -9,6 +9,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
 import { MatCardModule } from '@angular/material/card';
 import { OverlayModule } from '@angular/cdk/overlay';
+import {DragDropModule} from "@angular/cdk/drag-drop";
 
 const MATERIALS = [
   MatFormFieldModule,
@@ -21,6 +22,7 @@ const MATERIALS = [
   MatSelectModule,
   MatCardModule,
   OverlayModule,
+  DragDropModule
 ];
 
 @NgModule({
