@@ -9,7 +9,7 @@ import { DialogRef } from '../../services/dialogs/dialogRef';
   styleUrls: ['./create-new-task.component.scss'],
 })
 export class CreateNewTaskComponent implements OnInit {
-  titleForm!: FormGroup;
+  taskForm!: FormGroup;
 
   constructor(
     private dialogRef: DialogRef,
@@ -18,9 +18,9 @@ export class CreateNewTaskComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.titleForm = this.fb.group({
+    this.taskForm = this.fb.group({
       title: ['', Validators.required],
-      description: ['', Validators.required]
+      description: ['', Validators.required],
     });
   }
 
@@ -29,10 +29,10 @@ export class CreateNewTaskComponent implements OnInit {
   }
 
   onSubmit() {
-    if (!this.titleForm.value) {
+    if (!this.taskForm.value) {
       return;
     }
-    this.dialogRef.close(this.titleForm.value);
+    this.dialogRef.close(this.taskForm.value);
   }
 
   confirm() {
