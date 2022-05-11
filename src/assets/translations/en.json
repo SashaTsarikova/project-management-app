@@ -22,7 +22,8 @@
     }
   },
   "HEADER": {
-    "CREATE":"Create"
+    "CREATE":"Create",
+    "MAIN": "Main"
   },
   "FOOTER": {
     "GRIGORII" : "Grogirii Iavorskii",
@@ -34,8 +35,24 @@
     "SORRY" : "We're sorry. The page you are looking for cannot be found.",
     "OnMainPage" : "On main page"
   },
-  "AUTH": {},
-  "BOARDS": {},
+  "AUTH": {
+    "LOGIN": {
+      "TITLE1": "hello again!",
+      "TITLE2": "your projects are waiting",
+      "SUCCESS": "Login success",
+      "HAVE-ACCOUNT": "Doesn't have an account?"
+    },
+    "SIGNUP": {
+      "TITLE": "create new profile",
+      "BUTTON": "Sign up",
+      "HAVE-ACCOUNT": "Already have an account?",
+      "SUCCESS": "Signup success"
+    }
+  },
+  "BOARDS": {
+    "INPUT": "Input search params",
+    "BUTTON": "Open board"
+  },
   "CREATE_NEW_BOARD": {
     "ENTER_BOARD_NAME" : "Enter name for a new board",
     "BOARD_TITLE" : "Board title",
@@ -53,7 +70,17 @@
     "COLUMN_ORDER" : "Column order"
   },
   "TASK_FORM": {},
-  "USER": {},
+  "USER": {
+    "TITLE": "update your profile",
+    "NAME": "Enter your name",
+    "LOGIN": "Enter your login",
+    "PASSWORD": "Enter your password",
+    "REPASS": "Repeat your password",
+    "BUTTON": "Update",
+    "REQUIRED": "You must enter a value",
+    "NOT-MATCH" : "Passwords do not match",
+    "UPDATE-DATA": "update user data?"
+  },
   "CONFIRMATION": {},
   "LANGUAGES": {
     "EN": "English",

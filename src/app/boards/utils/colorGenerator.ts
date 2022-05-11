@@ -1,8 +1,22 @@
-export default function getRandomColor(): string {
-  const letters = '0123456789ABCDEF';
-  let color = '#';
-  for (let i = 0; i < 6; i += 1) {
-    color += letters[Math.floor(Math.random() * 16)];
-  }
-  return color;
-}
+export const colors: string[] = [
+  '#80cbc4',
+  '#c5e1a5',
+  '#ffab91',
+  '#b0bec5',
+  '#fff59d',
+  '#b39ddb',
+  '#ef9a9a',
+  '#e6ee9c',
+  '#1de9b6',
+  '#ea80fc',
+  '#f4ff81',
+  '#ff4081',
+  '#ffea00',
+  '#bdbdbd',
+  '#f06292',
+  '#4db6ac',
+  '#dcedc8',
+  '#ffeb3b',
+  '#00e676',
+  '#cddc39',
+];

@@ -2,11 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { switchMap } from 'rxjs';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ErrorHandlerService } from 'src/app/shared/services/errorhandler.service';
+import { Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 import { UserService } from '../../services/user.service';
 import { IUser } from '../../interfaces/IUser.interface';
-import { DialogService } from "../../../shared/services/dialogs/dialog.service";
-import { ConfirmationComponent } from "../../../shared/components/confirmation/confirmation.component";
-import {Router} from "@angular/router";
+import { DialogService } from '../../../shared/services/dialogs/dialog.service';
+import { ConfirmationComponent } from '../../../shared/components/confirmation/confirmation.component';
 
 @Component({
   selector: 'app-user',
@@ -26,6 +27,7 @@ export class UserComponent implements OnInit {
     private err: ErrorHandlerService,
     private dialogService: DialogService,
     private router: Router,
+    public translate: TranslateService
   ) {}
 
   ngOnInit(): void {
@@ -39,17 +41,19 @@ export class UserComponent implements OnInit {
     this.userService
       .currentUserId()
       .pipe(
-        switchMap((user?: string) => this.userService.getUserById(user as string)),
+        switchMap((user?: string) =>
+          this.userService.getUserById(user as string)
+        )
       )
       .subscribe((userData: IUser) => {
         this.currentUser = userData;
-        this.updateUserForm.controls['login'].setValue(this.currentUser.login)
-        this.updateUserForm.controls['name'].setValue(this.currentUser.name)
+        this.updateUserForm.controls['login'].setValue(this.currentUser.login);
+        this.updateUserForm.controls['name'].setValue(this.currentUser.name);
       });
   }
 
   getErrorMessage() {
-    return 'You must enter a value';
+    return this.translate.instant('USER.REQUIRED');
   }
 
   onSubmit() {
@@ -57,20 +61,26 @@ export class UserComponent implements OnInit {
       return;
     }
 
-    if (this.updateUserForm.get('password')?.value !== this.updateUserForm.get('repeatpass')?.value) {
-      this.err.errorHandler('Passwords do not match');
+    if (
+      this.updateUserForm.get('password')?.value !==
+      this.updateUserForm.get('repeatpass')?.value
+    ) {
+      this.err.errorHandler(this.translate.instant('USER.NOT-MATCH'));
       return;
     }
     delete this.updateUserForm.value.repeatpass;
 
-    const dialogRef = this.dialogService.open(ConfirmationComponent, { data: `update user data?` })
+    const dialogRef = this.dialogService.open(ConfirmationComponent, {
+      data: `${this.translate.instant('USER.UPDATE-DATA')}`,
+    });
     dialogRef.afterClosed().subscribe((result) => {
       if (result && this.currentUser.id) {
-        this.userService.updateUserById(this.currentUser.id, this.updateUserForm.value)
+        this.userService
+          .updateUserById(this.currentUser.id, this.updateUserForm.value)
           .subscribe((response: IUser) => {
-            this.userService.updateUser(response.login)
-            this.router.navigate(['/boards'])
-          })
+            this.userService.updateUser(response.login);
+            this.router.navigate(['/boards']);
+          });
       }
     });
   }

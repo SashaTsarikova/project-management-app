@@ -1,19 +1,19 @@
 <div class="login-form">
   <div class="login_greeting">
-    <div>hello again!</div>
-    <p>your projects a waiting</p>
+    <div>{{"AUTH.LOGIN.TITLE1" | translate}}</div>
+    <p>{{"AUTH.LOGIN.TITLE2" | translate}}</p>
   </div>
   <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
     <div class="email-container">
       <mat-form-field appearance="outline">
-        <mat-label>Enter your login</mat-label>
+        <mat-label>{{"USER.LOGIN" | translate}}</mat-label>
         <input matInput type="text" placeholder="pat@example.com" formControlName="login" required>
         <mat-error *ngIf="loginForm.get('login')?.hasError('required')">{{getErrorMessage()}}</mat-error>
       </mat-form-field>
     </div>
     <div class="password-container">
       <mat-form-field appearance="outline">
-        <mat-label>Enter your password</mat-label>
+        <mat-label>{{"USER.PASSWORD" | translate}}</mat-label>
         <input matInput [type]="hide ? 'password' : 'text'" formControlName="password">
         <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
           <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
@@ -29,5 +29,5 @@
       [disabled]="loginForm.invalid"
     >Login</button>
   </form>
-  <p routerLink="/auth/signup" class="login_sign-up-link">Doesn't have an account?<button mat-button color="primary">Sign up</button></p>
+  <p routerLink="/auth/signup" class="login_sign-up-link">{{"AUTH.LOGIN.HAVE-ACCOUNT" | translate}}<button mat-button color="primary">Sign up</button></p>
 </div>
