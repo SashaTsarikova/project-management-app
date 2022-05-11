@@ -63,7 +63,14 @@
     "ERROR" : "You must enter a value"
   },
   "USER": {},
-  "CONFIRMATION": {},
+  "CONFIRMATION": {
+    "QUESTION" : "Are you sure want to",
+    "YES" : "Yes",
+    "NO" : "No",
+    "DELETE_BOARD" : "delete board",
+    "DELETE_COLUMN" : "delete column",
+    "DELETE_TASK" : "delete board"
+  },
   "LANGUAGES": {
     "EN": "English",
     "RU": "Russian",

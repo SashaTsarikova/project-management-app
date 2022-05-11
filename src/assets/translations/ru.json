@@ -63,7 +63,14 @@
     "ERROR" : "Вы должны ввести значение"
   },
   "USER": {},
-  "CONFIRMATION": {},
+  "CONFIRMATION": {
+    "QUESTION" : "Вы уверены, что хотите",
+    "YES" : "Да",
+    "NO" : "Нет",
+    "DELETE_BOARD" : "удалить доску",
+    "DELETE_COLUMN" : "удалить колонку",
+    "DELETE_TASK" : "удалить задание"
+  },
   "LANGUAGES": {
     "EN": "Английский",
     "RU": "Русский",
