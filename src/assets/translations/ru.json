@@ -54,6 +54,14 @@
     "COLUMN_ORDER" : "Порядковый номер"
   },
   "TASK_FORM": {},
+  "CREATE_NEW_TASK": {
+    "ENTER_TASK_NAME" : "Введите название для новой задачи",
+    "TASK_TITLE" : "Название",
+    "TASK_DESCTIPRION" : "Описание",
+    "CANCEL" : "Отмена",
+    "CREATE" : "Создать",
+    "ERROR" : "Вы должны ввести значение"
+  },
   "USER": {},
   "CONFIRMATION": {},
   "LANGUAGES": {

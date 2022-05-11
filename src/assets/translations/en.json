@@ -54,6 +54,14 @@
     "COLUMN_ORDER" : "Column order"
   },
   "TASK_FORM": {},
+  "CREATE_NEW_TASK": {
+    "ENTER_TASK_NAME" : "Enter name for a new task",
+    "TASK_TITLE" : "Task title",
+    "TASK_DESCTIPRION" : "Task description",
+    "CANCEL" : "Cancel",
+    "CREATE" : "Сreate",
+    "ERROR" : "You must enter a value"
+  },
   "USER": {},
   "CONFIRMATION": {},
   "LANGUAGES": {
