@@ -88,7 +88,9 @@
     "BUTTON": "Update",
     "REQUIRED": "You must enter a value",
     "NOT-MATCH" : "Passwords do not match",
-    "UPDATE-DATA": "update user data?"
+    "UPDATE-DATA": "update user data?",
+    "DELETE-DATA": "DELETE this user?",
+    "DELETE" : "Delete"
   },
   "CONFIRMATION": {
     "QUESTION" : "Are you sure want to",
