@@ -41,7 +41,8 @@ export class ColumnItemComponent implements OnInit {
     public boardsService: BoardsService,
     private fb: FormBuilder,
     private dialogService: DialogService,
-    private userService: UserService
+    private userService: UserService,
+    public translate: TranslateService,
   ) {}
 
   ngOnInit(): void {
@@ -52,7 +53,7 @@ export class ColumnItemComponent implements OnInit {
   }
 
   changeTitleMenu() {
-    this.inputShow = !this.inputShow
+    this.inputShow = !this.inputShow;
   }
 
   confirmChangeTitle() {
@@ -62,13 +63,13 @@ export class ColumnItemComponent implements OnInit {
 
     const updateColumn = {
       title: this.columnForm.controls['title'].value,
-      order: this.column.order
-    }
+      order: this.column.order,
+    };
     this.boardsService.updateColumnById(this.boardId, this.column.id, updateColumn)
       .subscribe(() => {
         this.boardsService.updateCurrentBoard(this.boardId)
         this.inputShow = false;
-    })
+      });
   }
 
   cancelChangeTitle() {
@@ -76,7 +77,7 @@ export class ColumnItemComponent implements OnInit {
   }
 
   removeColumn() {
-    this.dialogService.open(ConfirmationComponent,  {data: `delete Column ${this.column.title}`})
+    this.dialogService.open(ConfirmationComponent, { data: `${this.translate.instant('CONFIRMATION.DELETE_COLUMN')} "${this.column.title}" ?` })
       .afterClosed()
         .pipe(
           filter(result => result),
