@@ -9,7 +9,7 @@ import { DialogRef } from '../../services/dialogs/dialogRef';
   styleUrls: ['./create-new-column.component.scss'],
 })
 export class CreateNewColumnComponent implements OnInit {
-  columnForm!: FormGroup;
+  titleForm!: FormGroup;
 
   constructor(
     private dialogRef: DialogRef,
@@ -18,7 +18,7 @@ export class CreateNewColumnComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.columnForm = this.fb.group({
+    this.titleForm = this.fb.group({
       title: ['', Validators.required],
     });
   }
@@ -28,10 +28,10 @@ export class CreateNewColumnComponent implements OnInit {
   }
 
   onSubmit() {
-    if (!this.columnForm.value) {
+    if (!this.titleForm.value) {
       return;
     }
-    this.dialogRef.close(this.columnForm.value);
+    this.dialogRef.close(this.titleForm.value);
   }
 
   confirm() {

@@ -20,7 +20,7 @@ export class CreateNewBoardComponent implements OnInit {
   ngOnInit(): void {
     this.titleForm = this.fb.group({
       title: ['', Validators.required],
-      description: ['', Validators.required],
+      description: ['', Validators.required]
     });
   }
 

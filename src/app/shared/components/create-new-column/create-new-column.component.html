@@ -1,14 +1,14 @@
 <div class="wrapper">
-  <p class="modal_headline">{{'COLUMN_FORM.ENTER_COLUMN_NAME' | translate}}</p>
-  <form class="column-form" [formGroup]="columnForm" (submit)="onSubmit()">
+  <p class="modal_headline">{{'CREATE_NEW_BOARD.ENTER_BOARD_NAME' | translate}}</p>
+  <form class="title-form" [formGroup]="titleForm" (submit)="onSubmit()">
     <mat-form-field class="example-full-width" appearance="outline">
-      <mat-label>{{'COLUMN_FORM.COLUMN_TITLE' | translate}}</mat-label>
-      <input matInput formControlName="title" placeholder="{{'COLUMN_FORM.COLUMN_TITLE' | translate}}">
-      <mat-error *ngIf="columnForm.get('title')?.hasError('required')">{{'COLUMN_FORM.ERROR' | translate}}</mat-error>
+      <mat-label>{{'CREATE_NEW_BOARD.BOARD_TITLE' | translate}}</mat-label>
+      <input matInput formControlName="title" placeholder="{{'CREATE_NEW_BOARD.BOARD_TITLE' | translate}}">
+      <mat-error *ngIf="titleForm.get('title')?.hasError('required')">{{'CREATE_NEW_BOARD.ERROR' | translate}}</mat-error>
     </mat-form-field>
   </form>
-  <div class="column-form_buttons">
-    <button (click)="reject()" mat-raised-button color="accent">{{'COLUMN_FORM.CANCEL' | translate}}</button>
-    <button (click)="confirm()" type="submit" [disabled]="columnForm.invalid" mat-raised-button color="primary">{{'COLUMN_FORM.CREATE' | translate}}</button>
+  <div class="title-form_buttons">
+    <button (click)="reject()" mat-raised-button color="accent">{{'CREATE_NEW_BOARD.CANCEL' | translate}}</button>
+    <button (click)="confirm()" type="submit" [disabled]="titleForm.invalid" mat-raised-button color="primary">{{'CREATE_NEW_BOARD.CREATE' | translate}}</button>
   </div>
 </div>

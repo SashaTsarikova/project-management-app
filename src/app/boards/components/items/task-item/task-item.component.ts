@@ -19,14 +19,13 @@ export class TaskItemComponent implements OnInit {
 
   constructor(
     private dialogService: DialogService,
-    private boardService: BoardsService,
-    public translate: TranslateService,
-  ) {}
+    private boardService: BoardsService
+    ) {}
 
   ngOnInit(): void {}
 
   removeTask() {
-    this.dialogService.open(ConfirmationComponent, { data: `${this.translate.instant('CONFIRMATION.DELETE_TASK')} "${this.task.title}" ?` })
+    this.dialogService.open(ConfirmationComponent, {data: `delete Task ${this.task.title}`})
       .afterClosed()
         .pipe(
           filter(result => result),
@@ -35,3 +34,4 @@ export class TaskItemComponent implements OnInit {
       .subscribe(() => this.boardService.updateCurrentBoard(this.boardId))
   }
 }
+

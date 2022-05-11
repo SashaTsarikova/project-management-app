@@ -56,7 +56,6 @@
   "CREATE_NEW_BOARD": {
     "ENTER_BOARD_NAME" : "Enter name for a new board",
     "BOARD_TITLE" : "Board title",
-    "BOARD_DESCTIPRION" : "Board description",
     "CANCEL" : "Cancel",
     "CREATE" : "Сreate",
     "ERROR" : "You must enter a value"
@@ -71,14 +70,6 @@
     "COLUMN_ORDER" : "Column order"
   },
   "TASK_FORM": {},
-  "CREATE_NEW_TASK": {
-    "ENTER_TASK_NAME" : "Enter name for a new task",
-    "TASK_TITLE" : "Task title",
-    "TASK_DESCTIPRION" : "Task description",
-    "CANCEL" : "Cancel",
-    "CREATE" : "Сreate",
-    "ERROR" : "You must enter a value"
-  },
   "USER": {
     "TITLE": "update your profile",
     "NAME": "Enter your name",
@@ -88,18 +79,9 @@
     "BUTTON": "Update",
     "REQUIRED": "You must enter a value",
     "NOT-MATCH" : "Passwords do not match",
-    "UPDATE-DATA": "update user data?",
-    "DELETE-DATA": "DELETE this user?",
-    "DELETE" : "Delete"
+    "UPDATE-DATA": "update user data?"
   },
-  "CONFIRMATION": {
-    "QUESTION" : "Are you sure want to",
-    "YES" : "Yes",
-    "NO" : "No",
-    "DELETE_BOARD" : "delete board",
-    "DELETE_COLUMN" : "delete column",
-    "DELETE_TASK" : "delete board"
-  },
+  "CONFIRMATION": {},
   "LANGUAGES": {
     "EN": "English",
     "RU": "Russian",

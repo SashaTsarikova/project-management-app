@@ -3,7 +3,7 @@
     <div class="edit_greeting">
       <p>{{"USER.TITLE" | translate}}</p>
     </div>
-    <form [formGroup]="updateUserForm">
+    <form [formGroup]="updateUserForm" (submit)="onSubmit()">
       <mat-form-field appearance="outline">
         <mat-label>{{"USER.NAME" | translate}}</mat-label>
         <input matInput formControlName="name">
@@ -36,10 +36,7 @@
           <mat-error *ngIf="updateUserForm.get('repeatpass')?.hasError('required')">{{getErrorMessage()}}</mat-error>
         </mat-form-field>
       </div>
-      <div class="edit_buttons">
-        <button (click)="onSubmit(submitType.delete)" name="button_delete" [disabled]="updateUserForm.invalid" class="edit_button" mat-raised-button color="accent">{{"USER.DELETE" | translate}}</button>
-        <button (click)="onSubmit(submitType.edit)" name="button_upgrade" [disabled]="updateUserForm.invalid" class="edit_button" mat-raised-button color="primary">{{"USER.BUTTON" | translate}}</button>
-      </div>
+      <button type="submit" [disabled]="updateUserForm.invalid" class="edit_button" mat-raised-button color="primary">{{"USER.BUTTON" | translate}}</button>
     </form>
   </div>
 </section> <div class="edit-form">
