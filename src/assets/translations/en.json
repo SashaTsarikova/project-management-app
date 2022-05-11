@@ -39,6 +39,7 @@
   "CREATE_NEW_BOARD": {
     "ENTER_BOARD_NAME" : "Enter name for a new board",
     "BOARD_TITLE" : "Board title",
+    "BOARD_DESCTIPRION" : "Board description",
     "CANCEL" : "Cancel",
     "CREATE" : "Сreate",
     "ERROR" : "You must enter a value"

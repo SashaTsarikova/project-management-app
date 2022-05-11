@@ -7,8 +7,8 @@
       <mat-error *ngIf="titleForm.get('title')?.hasError('required')">{{'CREATE_NEW_BOARD.ERROR' | translate}}</mat-error>
     </mat-form-field>
     <mat-form-field class="example-full-width" appearance="outline">
-      <mat-label>{{'CREATE_NEW_BOARD.BOARD_TITLE' | translate}}</mat-label>
-      <input matInput formControlName="description" placeholder="{{'CREATE_NEW_BOARD.BOARD_TITLE' | translate}}">
+      <mat-label>{{'CREATE_NEW_BOARD.BOARD_DESCTIPRION' | translate}}</mat-label>
+      <input matInput formControlName="description" placeholder="{{'CREATE_NEW_BOARD.BOARD_DESCTIPRION' | translate}}">
       <mat-error *ngIf="titleForm.get('description')?.hasError('required')">{{'CREATE_NEW_BOARD.ERROR' | translate}}</mat-error>
     </mat-form-field>
   </form>
