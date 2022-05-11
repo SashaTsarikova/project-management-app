@@ -1,7 +1,7 @@
 <header class="header" (scroll)="onScroll()" [ngClass]="headerFixed?'fixed':'nofixed'">
   <div class="main-container">
     <div class="folder-lang-container">
-      <button class="folder-icon" (click)="createNewBoard()" [ngStyle]="{'visibility': (isLoggedIn | async) ? 'visible' : 'hidden'}" mat-button color="primary" aria-label="create folder icon">
+      <button class="folder-icon" (click)="createNewBoard()" [ngStyle]="{'visibility': (isLoggedIn$ | async) ? 'visible' : 'hidden'}" mat-button color="primary" aria-label="create folder icon">
         {{'HEADER.CREATE' | translate}} <mat-icon >create_new_folder</mat-icon>
       </button>
       <mat-form-field>
@@ -16,30 +16,32 @@
       </mat-form-field>
     </div>
     <div class="auth-container">
-      <div *ngIf="(isLoggedIn | async)" class="auth-container_user">
-        <button mat-button color="warn" aria-label="icon edit" (click)="goToUser()">
-          <mat-icon>edit</mat-icon>
-        </button>
-        <p class="title">{{ userName | async}}</p>
-      </div>
-      <div  class="auth-container_buttons">
-        <ng-container *ngIf="(isLoggedIn | async); else logInPart">
+      <ng-container *ngIf="(isLoggedIn$ | async); else logInPart">
+        <div class="auth-container_user">
+          <button mat-button color="warn" aria-label="icon edit" (click)="goToUser()">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <p class="title">{{ userName | async}}</p>
+        </div>
+        <div class="auth-container_buttons">
           <button class="button" mat-stroked-button color="primary" (click)="logOut()">
             log out
           </button>
           <button class="button"  mat-raised-button  color="primary" (click)="goToBoards()">
             {{'HEADER.MAIN' | translate}}
           </button>
-        </ng-container>
-        <ng-template #logInPart class="auth-container_buttons">
-          <button class="button" mat-stroked-button color="primary" (click)="goToLogin()">
-            log in
-          </button>
-          <button class="button" mat-raised-button color="primary" (click)="goToSignup()">
-            sign up
-          </button>
-      </ng-template>
+        </div>
+      </ng-container>
+        <ng-template #logInPart>
+          <div class="auth-container_buttons">
+            <button class="button" mat-stroked-button color="primary" (click)="goToLogin()">
+              log in
+            </button>
+            <button class="button" mat-raised-button color="primary" (click)="goToSignup()">
+              sign up
+            </button>
+          </div>
+        </ng-template>
       </div>
     </div>
-  </div>
 </header>

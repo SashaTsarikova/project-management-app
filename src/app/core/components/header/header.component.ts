@@ -16,7 +16,7 @@ import { Observable } from 'rxjs';
 export class HeaderComponent implements OnInit {
   public userName = this.auth.currentUser$;
 
-  public isLoggedIn: Observable<boolean> = this.auth.isLoggedIn;
+  public isLoggedIn$: Observable<boolean> = this.auth.isLoggedIn;
 
   public headerFixed = false;
 
