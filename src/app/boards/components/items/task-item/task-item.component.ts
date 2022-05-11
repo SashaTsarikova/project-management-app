@@ -1,10 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ITask } from 'src/app/boards/interfaces/ITask.interface';
-import { switchMap } from 'rxjs';
+import {DialogService} from "../../../../shared/services/dialogs/dialog.service";
+import {ConfirmationComponent} from "../../../../shared/components/confirmation/confirmation.component";
+import {BoardsService} from "../../../services/boards.service";
+import {filter, switchMap} from "rxjs";
 import { TranslateService } from '@ngx-translate/core';
-import { DialogService } from '../../../../shared/services/dialogs/dialog.service';
-import { ConfirmationComponent } from '../../../../shared/components/confirmation/confirmation.component';
-import { BoardsService } from '../../../services/boards.service';
 
 @Component({
   selector: 'app-task-item',
@@ -30,8 +30,9 @@ export class TaskItemComponent implements OnInit {
     this.dialogService.open(ConfirmationComponent, { data: `${this.translate.instant('CONFIRMATION.DELETE_TASK')} "${this.task.title}" ?` })
       .afterClosed()
       .pipe(
-        switchMap(() => this.boardService.deleteTaskById(this.boardId, <string> this.columnId, <string> this.task.id)),
-      )
-      .subscribe(() => this.boardService.updateColumns(this.boardId));
+          filter(result => result),
+          switchMap(() => this.boardService.deleteTaskById(this.boardId, <string>this.columnId, <string>this.task.id))
+        )
+      .subscribe(() => this.boardService.updateCurrentBoard(this.boardId))
   }
 }

@@ -9,7 +9,7 @@
     </div>
     <div class="board-container">
       <div class="title-block">
-        <ng-container *ngIf="(board$ | async) as board">
+        <ng-container *ngIf="board">
           <p class="title">{{board.title}}</p>
         </ng-container>
       </div>
@@ -21,13 +21,17 @@
             </mat-icon>
           </button>
         </div>
-        <div class="board-container_columns" cdkDropList cdkDropListOrientation="horizontal" (cdkDropListDropped)="drop($event)">
-          <ng-container *ngIf="(boardsService.allColumns$ | async) as columns">
-            <div class="column-item" *ngFor="let column of columns" cdkDrag>
+        <div class="board-container_columns"
+             cdkDropList cdkDropListOrientation="horizontal"
+             (cdkDropListDropped)="drop($event)">
+          <ng-container *ngIf="board?.columns as columns">
+            <div class="column-item" *ngFor="let column of columns; index as i" cdkDrag>
               <app-column-item
+                [columnData]="getColumnData(i, column)"
                 [column]="column"
                 [color]="color"
-                [boardId]="boardId">
+                [boardId]="boardId"
+                (dropTaskEvent)="dropTask($event)">
               </app-column-item>
             </div>
           </ng-container>

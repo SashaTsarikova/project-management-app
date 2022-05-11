@@ -1,6 +1,5 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {ErrorHandlerService} from "../../shared/services/errorhandler.service";
 import {PATH} from "../../auth/models/base-path";
 import {IColumn} from "../interfaces/IColumn.interface";
 import {ITask} from "../interfaces/ITask.interface";
@@ -14,20 +13,20 @@ export class BoardsService {
   private allBoardsSubject: BehaviorSubject<IBoard[]> = new BehaviorSubject<IBoard[]>([])
   allBoards$: Observable<IBoard[]> = this.allBoardsSubject.asObservable()
 
-  private allColumnsSubject: BehaviorSubject<IColumn[]> = new BehaviorSubject<IColumn[]>([])
-  allColumns$: Observable<IColumn[]> = this.allColumnsSubject.asObservable()
-
-  private allTasksSubject: BehaviorSubject<ITask[]> = new BehaviorSubject<ITask[]>([])
-  allTasks$: Observable<ITask[]> = this.allTasksSubject.asObservable()
+  private boardByIdSubject: BehaviorSubject<IBoard> = new BehaviorSubject<IBoard>(<IBoard>{});
+  boardById$: Observable<IBoard> = this.boardByIdSubject.asObservable()
 
   constructor(
     private http: HttpClient,
-    private err: ErrorHandlerService
     ) { }
 
   //Boards
   updateBoards() {
     this.getAllBoards().subscribe(res => this.allBoardsSubject.next(res))
+  }
+
+  updateCurrentBoard(boardId: string) {
+    this.getBoardById(boardId).subscribe(res => this.boardByIdSubject.next(res))
   }
 
   getAllBoards(): Observable<IBoard[]> {
@@ -38,8 +37,8 @@ export class BoardsService {
     return this.http.post(`${PATH}/boards`, createBoard)
   }
 
-  getBoardById(boardId: string) {
-    return this.http.get(`${PATH}/boards/${boardId}`)
+  getBoardById(boardId: string): Observable<IBoard> {
+    return this.http.get<IBoard>(`${PATH}/boards/${boardId}`)
   }
 
   deleteBoardById(boardId: string) {
@@ -51,9 +50,6 @@ export class BoardsService {
   }
 
   //Columns
-  updateColumns(boardId: string) {
-    this.getAllColumns(boardId).subscribe(res => this.allColumnsSubject.next(res))
-  }
 
   getAllColumns(boardId: string): Observable<IColumn[]> {
     return this.http.get<IColumn[]>(`${PATH}/boards/${boardId}/columns`)
@@ -76,21 +72,16 @@ export class BoardsService {
   }
 
   calculateColumnOrder() {
-    if(!this.allColumnsSubject.value.length) {
+    if(!this.boardByIdSubject.value.columns?.length) {
       return 0
     }
-    let order = this.allColumnsSubject.value.reduce((acc, curr) => acc.order > curr.order ? acc : curr)
+    let order = this.boardByIdSubject.value.columns.reduce((acc, curr) => acc.order > curr.order ? acc : curr)
     let count = order.order
     count += 1;
     return count;
   }
 
   //Tasks
-  updateTasks(boardId: string, columnId: string) {
-    this.getAllTasks(boardId, columnId).subscribe(res => {
-      this.allColumnsSubject.next(res)
-    })
-  }
 
   getAllTasks(boardId: string, columnId: string): Observable<ITask[]> {
     return this.http.get<ITask[]>(`${PATH}/boards/${boardId}/columns/${columnId}/tasks`)
@@ -112,20 +103,14 @@ export class BoardsService {
     return this.http.put(`${PATH}/boards/${boardId}/columns/${columnId}/tasks/${taskId}`, updateTask)
   }
 
-  calculateTaskOrder() {
-    if(!this.allTasksSubject.value.length) {
+  calculateTaskOrder(columnId: string): number {
+    const currColumn = this.boardByIdSubject.value.columns?.find(column => columnId === column.id)
+    if(!currColumn?.tasks?.length) {
       return 0
     }
-    let order = this.allTasksSubject.value.reduce((acc, curr) => acc.order > curr.order ? acc : curr)
+    let order = currColumn.tasks.reduce((acc, curr) => acc.order > curr.order ? acc : curr)
     let count = order.order
     count += 1;
     return count;
-  }
-
-  findColumns(prevPos: number, currPos: number) {
-    return {
-      prevColumn: this.allColumnsSubject.value.find(column => column.order === prevPos),
-      currColumn: this.allColumnsSubject.value.find(column => column.order === currPos)
-    }
   }
 }

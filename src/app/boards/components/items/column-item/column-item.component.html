@@ -18,14 +18,19 @@
     </div>
   </form>
     <div class="column-block">
-      <div class="column-container_tasks">
-          <ng-container *ngFor="let task of tasks || []">
+      <div class="column-container_tasks"
+           cdkDropList
+           [id]="'column-' + columnData.id"
+           [cdkDropListConnectedTo]="columnData.otherColumn"
+           [cdkDropListData]="columnData.tasks"
+           (cdkDropListDropped)="dropTask($event)">
+          <div class="task-item" *ngFor="let task of columnData.tasks || []" cdkDrag>
             <app-task-item class="task"
               [task]="task"
               [boardId]="boardId"
               [columnId]="column.id">
             </app-task-item>
-          </ng-container>
+          </div>
       </div>
       <div class="column-container_create">
         <button class="button_create" (click)="createTask()">
