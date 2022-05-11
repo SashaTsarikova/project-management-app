@@ -3,7 +3,7 @@ import { ITask } from 'src/app/boards/interfaces/ITask.interface';
 import {DialogService} from "../../../../shared/services/dialogs/dialog.service";
 import {ConfirmationComponent} from "../../../../shared/components/confirmation/confirmation.component";
 import {BoardsService} from "../../../services/boards.service";
-import {switchMap} from "rxjs";
+import {filter, switchMap} from "rxjs";
 
 @Component({
   selector: 'app-task-item',
@@ -28,9 +28,10 @@ export class TaskItemComponent implements OnInit {
     this.dialogService.open(ConfirmationComponent, {data: `delete Task ${this.task.title}`})
       .afterClosed()
         .pipe(
+          filter(result => result),
           switchMap(() => this.boardService.deleteTaskById(this.boardId, <string>this.columnId, <string>this.task.id))
         )
-      .subscribe(() => this.boardService.updateColumns(this.boardId))
+      .subscribe(() => this.boardService.updateCurrentBoard(this.boardId))
   }
 }
 

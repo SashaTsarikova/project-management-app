@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Observable } from 'rxjs';
 import { IColumn } from '../../interfaces/IColumn.interface';
 import { BoardsService } from '../../services/boards.service';
 import {DialogService} from "../../../shared/services/dialogs/dialog.service";
 import {CreateNewColumnComponent} from "../../../shared/components/create-new-column/create-new-column.component";
-import {CdkDragDrop, moveItemInArray} from "@angular/cdk/drag-drop";
+import {CdkDragDrop, moveItemInArray, transferArrayItem} from "@angular/cdk/drag-drop";
 import {IBoard} from "../../interfaces/IBoard.interface";
+import {ITask} from "../../interfaces/ITask.interface";
+import {filter, switchMap} from "rxjs";
 
 @Component({
   selector: 'app-one-board',
@@ -18,9 +19,7 @@ export class OneBoardComponent implements OnInit {
 
   color: string = '#47c383';
 
-  public board$!: Observable<any>;
-
-  public columns!: IColumn[];
+  public board!: IBoard;
 
   constructor(
     private router: Router,
@@ -38,9 +37,8 @@ export class OneBoardComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.board$ = this.boardsService.getBoardById(this.boardId);
-    this.boardsService.updateColumns(this.boardId)
-    this.boardsService.allColumns$.subscribe(columns => this.columns = columns)
+    this.boardsService.updateCurrentBoard(this.boardId)
+    this.boardsService.boardById$.subscribe(board => this.board = board)
   }
 
   goToBoards() {
@@ -49,39 +47,47 @@ export class OneBoardComponent implements OnInit {
 
   createColumn() {
     const dialogRef = this.dialog.open(CreateNewColumnComponent)
-    dialogRef.afterClosed().subscribe((result) => {
-      if (result) {
-        const createColumn: IColumn = {
-          title: result.title,
-          order: this.boardsService.calculateColumnOrder()
-        }
-        this.boardsService.createColumn(this.boardId, createColumn).subscribe(() => this.boardsService.updateColumns(this.boardId))
-      }
-    })
+    dialogRef.afterClosed()
+      .pipe(
+        filter(result => result),
+        switchMap(result => {
+          const createColumn: IColumn = {
+            title: result.title,
+            order: this.boardsService.calculateColumnOrder()
+          }
+          return this.boardsService.createColumn(this.boardId, createColumn)
+        })).subscribe(() => this.boardsService.updateCurrentBoard(this.boardId))
   }
 
-  drop(event: CdkDragDrop<IBoard[]>) {
-    moveItemInArray(this.columns, event.previousIndex, event.currentIndex);
-    const replaceColumn = this.boardsService.findColumns(event.previousIndex, event.currentIndex)
-    const swapReplace = {...replaceColumn.prevColumn}
-    swapReplace!.order = 999;
-    delete(swapReplace!.id)
-    const currReplace = {...replaceColumn.currColumn}
-    currReplace!.order = event.previousIndex
-    delete(currReplace!.id)
-
-    if (replaceColumn.prevColumn?.id && swapReplace) {
-      this.boardsService
-        .updateColumnById(this.boardId, replaceColumn.prevColumn.id, <IColumn>swapReplace).subscribe(() => {
-          if(replaceColumn.currColumn?.id && currReplace) {
-            this.boardsService
-              .updateColumnById(this.boardId, replaceColumn.currColumn.id, <IColumn>currReplace).subscribe(() => {
-                if (replaceColumn.prevColumn?.id && replaceColumn.currColumn) {
-                  this.boardsService.updateColumnById(this.boardId, replaceColumn.prevColumn.id, replaceColumn.currColumn).subscribe()
-                }
-            })
-          }
-      })
+  getColumnData(i: number, columnData: IColumn) {
+    return {
+      ...columnData,
+      id: i,
+      otherColumn: [...Array(this.board.columns?.length).keys()]
+        .filter(el => el !== i).map(el => `column-${el}`)
     }
+  }
+
+  public dropTask(event: CdkDragDrop<ITask[] | undefined, ITask[]>): void {
+    if (!event.container?.data) {
+      return;
+    }
+    if (event.previousContainer === event.container) {
+      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+    } else {
+      transferArrayItem(
+        event.previousContainer.data,
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex,
+      );
+    }
+  }
+
+  drop(event: CdkDragDrop<IColumn[]>) {
+    if(event.previousIndex === event.currentIndex) {
+      return;
+    }
+    moveItemInArray(<IColumn[]>this.board.columns, event.previousIndex, event.currentIndex);
   }
 }

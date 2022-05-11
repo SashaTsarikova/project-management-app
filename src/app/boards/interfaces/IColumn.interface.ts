@@ -6,3 +6,7 @@ export interface IColumn {
   order: number;
   tasks?: ITask[];
 }
+
+export interface IOtherColumn extends IColumn {
+  otherColumns: string[];
+}
