@@ -1,4 +1,4 @@
-<div appAddBoarderColor [borderColor]="color" class="main-container">
+<div class="main-container">
   <button class="close" (click)="removeColumn()"><mat-icon>delete</mat-icon></button>
   <div class="column-container" >
     <form [formGroup]="columnForm" (submit)="confirmChangeTitle()">
@@ -6,18 +6,26 @@
       <p class="title" (click)="changeTitleMenu()" >{{column.title}}</p>
         <input class="title-input" type="text" value="{{column.title}}" formControlName="title">
         <button class="button_confirm" type="submit">
-          <mat-icon color="primary">
+          <mat-icon>
             check
           </mat-icon>
         </button>
         <button class="button_reject" (click)="cancelChangeTitle()">
-          <mat-icon color="primary">
+          <mat-icon>
             cancel
           </mat-icon>
         </button>
     </div>
   </form>
     <div class="column-block">
+      <div class="column-container_create">
+        <button class="button_create" (click)="createTask()">
+          <mat-icon>
+            add
+          </mat-icon>
+          {{"ONE_BOARD.ADD_TASK" | translate}}
+        </button>
+      </div>
       <div class="column-container_tasks"
            cdkDropList
            [id]="'column-' + columnData.id"
@@ -31,13 +39,6 @@
               [columnId]="column.id">
             </app-task-item>
           </div>
-      </div>
-      <div class="column-container_create">
-        <button class="button_create" (click)="createTask()">
-          <mat-icon color="primary">
-            add
-          </mat-icon>
-        </button>
       </div>
     </div>
   </div>

@@ -61,7 +61,7 @@
   transition: 0.3s ease-in-out;
 }
 
-@media (max-width: 768px) and (orientation: landscape){
+@media (max-width: 1024px) and (orientation: landscape){
   .header{
     height: auto;
   }
@@ -71,8 +71,9 @@
     justify-content: space-between;
     flex-wrap: wrap-reverse;
     .auth-container{
-      flex-direction: column-reverse;
-      padding: 2%;
+      .title{
+        display: none;
+      }
     }
   }
 }
