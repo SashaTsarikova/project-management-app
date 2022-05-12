@@ -26,13 +26,16 @@ export class AuthService {
     return this.currentUserSubject.value;
   }
 
-  get isLoggedIn(): Observable<boolean> {
-    return this.currentUserSubject.pipe(map((val: string) => !!val));
+  get isLoggedIn() {
+    return !!this.userToken.value
   }
 
   logout(): void {
     localStorage.removeItem('currentUser');
+    localStorage.removeItem('token');
     this.currentUserSubject.next('');
+    this.userToken.next('')
+    this.router.navigate(['/welcome'])
   }
 
   login(loginUser: ILogin) {

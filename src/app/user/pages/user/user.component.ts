@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { switchMap } from 'rxjs';
+import {filter, startWith, switchMap} from 'rxjs';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ErrorHandlerService } from 'src/app/shared/services/errorhandler.service';
 import { Router } from '@angular/router';
@@ -61,16 +61,15 @@ export class UserComponent implements OnInit {
     return this.translate.instant('USER.REQUIRED');
   }
 
-  onlogOut() {
+  onLogOut() {
     const dialogRef = this.dialogService.open(ConfirmationComponent, {
       data: `${this.translate.instant('USER.DELETE-DATA')}`,
     });
-    dialogRef.afterClosed().subscribe((result) => {
-      if (result && this.currentUser.id) {
-        this.auth.logout();
-        // TODO: Delete user
-      }
-    });
+    dialogRef.afterClosed()
+      .pipe(
+        filter(result => result),
+        switchMap(() => this.userService.deleteUserById(<string>this.currentUser.id))
+      ).subscribe(() => this.auth.logout());
   }
 
   onSubmit(type: string) {
@@ -91,19 +90,17 @@ export class UserComponent implements OnInit {
       const dialogRef = this.dialogService.open(ConfirmationComponent, {
         data: `${this.translate.instant('USER.UPDATE-DATA')}`,
       });
-      dialogRef.afterClosed().subscribe((result) => {
-        if (result && this.currentUser.id) {
-          this.userService
-            .updateUserById(this.currentUser.id, this.updateUserForm.value)
-            .subscribe((response: IUser) => {
+      dialogRef.afterClosed()
+        .pipe(
+          filter(filter => filter),
+          switchMap(() => this.userService.updateUserById(<string>this.currentUser.id, this.updateUserForm.value))
+        ).subscribe((response: IUser) => {
               this.userService.updateUser(response.login);
               this.router.navigate(['/boards']);
             });
-        }
-      });
-    }
+      }
     if (type === this.submitType.delete) {
-      this.onlogOut();
+      this.onLogOut();
     }
   }
 }

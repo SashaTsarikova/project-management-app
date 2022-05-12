@@ -1,7 +1,7 @@
 <header class="header" (scroll)="onScroll()" [ngClass]="headerFixed?'fixed':'nofixed'">
   <div class="main-container">
     <div class="folder-lang-container">
-      <button class="folder-icon" (click)="createNewBoard()" [ngStyle]="{'visibility': (isLoggedIn$ | async) ? 'visible' : 'hidden'}" mat-button color="primary" aria-label="create folder icon">
+      <button class="folder-icon" (click)="createNewBoard()" [ngStyle]="{'visibility': auth.isLoggedIn ? 'visible' : 'hidden'}" mat-button color="primary" aria-label="create folder icon">
         {{'HEADER.CREATE' | translate}} <mat-icon >create_new_folder</mat-icon>
       </button>
       <mat-form-field>
@@ -16,7 +16,7 @@
       </mat-form-field>
     </div>
     <div class="auth-container">
-      <ng-container *ngIf="(isLoggedIn$ | async); else logInPart">
+      <ng-container *ngIf="auth.isLoggedIn; else logInPart">
         <div class="auth-container_user">
           <button mat-button color="warn" aria-label="icon edit" (click)="goToUser()">
             <mat-icon>edit</mat-icon>

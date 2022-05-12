@@ -5,7 +5,6 @@ import { DialogService } from 'src/app/shared/services/dialogs/dialog.service';
 import { CreateNewBoardComponent } from 'src/app/shared/components/create-new-board/create-new-board.component';
 import {BoardsService} from "../../../boards/services/boards.service";
 import {AuthService} from "../../../auth/services/auth.service";
-import { Observable } from 'rxjs';
 
 
 @Component({
@@ -15,8 +14,6 @@ import { Observable } from 'rxjs';
 })
 export class HeaderComponent implements OnInit {
   public userName = this.auth.currentUser$;
-
-  public isLoggedIn$: Observable<boolean> = this.auth.isLoggedIn;
 
   public headerFixed = false;
 
@@ -30,10 +27,10 @@ export class HeaderComponent implements OnInit {
     private router: Router,
     private dialog: DialogService,
     private boardsService: BoardsService,
-    private auth: AuthService
+    public auth: AuthService,
   ) { }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {}
 
   changeLang(lang: string) {
     if (lang) {
