@@ -9,6 +9,8 @@
   flex-direction: column;
   margin: 3vmin;
   .title{
+    width: 75%;
+    text-align: center;
     font-size: clamp(1.5rem, 2rem, 2.5rem);
     font-weight: 700;
     line-height: clamp(1.6rem, 2.1rem, 2.6rem);

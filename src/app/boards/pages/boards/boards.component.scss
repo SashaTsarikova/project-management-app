@@ -1,25 +1,5 @@
 .main-container{
   min-height: 79vh;
-  .search-block{
-    width: 85%;
-    margin: 0 auto;
-    display: flex;
-    justify-content: flex-end;
-  }
-  .search-block_container{
-    width: 30%;
-    min-width: 160px;
-    height: auto;
-    background: rgba($color: #47c383, $alpha: 1);
-    margin: 1.5vmin;
-    border-top-left-radius: 10px;
-    border-bottom-left-radius: 10px;
-  }
-  .search-input{
-    width: 100%;
-    height: inherit;
-  }
-
   .boards-block{
     width: 85%;
     margin: 0 auto;
@@ -34,20 +14,12 @@
 @media (max-width: 1024px) and (orientation: landscape){
   .main-container{
     min-height: 77vh;
-    .search-block_container{
-      width: 50%;
-      max-height: 53px;
-    }
   }
 }
 
 @media (max-width: 768px) and (orientation: portrait){
   .main-container{
     min-height: 77vh;
-    .search-block_container{
-      max-height: 53px;
-      width: 80%;
-    }
     .boards-block{
       justify-content: center;
     }
