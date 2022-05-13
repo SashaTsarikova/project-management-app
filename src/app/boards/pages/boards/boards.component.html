@@ -1,13 +1,4 @@
 <section class="main-container colored-bg">
-  <div class="search-block">
-    <div class="search-block_container">
-      <mat-form-field appearance="fill" class="search-input" color="accent">
-        <mat-icon matPrefix>search</mat-icon>
-        <mat-label>{{"BOARDS.INPUT" | translate}}</mat-label>
-        <input matInput placeholder="" autocomplete="off">
-      </mat-form-field>
-    </div>
-  </div>
   <div class="boards-block">
     <ng-container *ngIf="(boardsService.allBoards$ | async) as boards">
       <ng-container *ngFor="let board of boards; let i = index">

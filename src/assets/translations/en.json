@@ -53,6 +53,10 @@
     "INPUT": "Input search params",
     "BUTTON": "Open board"
   },
+  "ONE_BOARD": {
+    "ADD_COLUMN": "Add column",
+    "ADD_TASK": "Add task"
+  },
   "CREATE_NEW_BOARD": {
     "ENTER_BOARD_NAME" : "Enter name for a new board",
     "BOARD_TITLE" : "Board title",
