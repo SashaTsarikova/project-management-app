@@ -98,7 +98,15 @@
     "NO" : "No",
     "DELETE_BOARD" : "delete board",
     "DELETE_COLUMN" : "delete column",
-    "DELETE_TASK" : "delete board"
+    "DELETE_TASK" : "delete task"
+  },
+  "EDIT_TASK": {
+    "ENTER_TASK_NAME" : "Edit task",
+    "TASK_TITLE" : "Task title",
+    "TASK_DESCTIPRION" : "Task description",
+    "CANCEL" : "Cancel",
+    "UPDATE" : "Update",
+    "ERROR" : "You must enter a value"
   },
   "LANGUAGES": {
     "EN": "English",
