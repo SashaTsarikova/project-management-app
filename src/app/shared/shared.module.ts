@@ -8,6 +8,7 @@ import { MaterialModule } from './material/material.module';
 import { CreateNewBoardComponent } from './components/create-new-board/create-new-board.component';
 import {CreateNewColumnComponent} from "./components/create-new-column/create-new-column.component";
 import {CreateNewTaskComponent} from "./components/create-new-task/create-new-task.component";
+import { EditTaskComponent } from './components/edit-task/edit-task.component';
 
 const MODULES = [
   CommonModule,
@@ -23,7 +24,8 @@ const MODULES = [
     ConfirmationComponent,
     CreateNewBoardComponent,
     CreateNewColumnComponent,
-    CreateNewTaskComponent
+    CreateNewTaskComponent,
+    EditTaskComponent
   ],
   imports: MODULES,
   exports: MODULES,

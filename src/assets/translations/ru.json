@@ -103,6 +103,14 @@
     "DELETE_COLUMN" : "удалить колонку",
     "DELETE_TASK" : "удалить задание"
   },
+  "EDIT_TASK": {
+    "ENTER_TASK_NAME" : "Редактирование задания ",
+    "TASK_TITLE" : "Название",
+    "TASK_DESCTIPRION" : "Описание",
+    "CANCEL" : "Отмена",
+    "UPDATE" : "Обновить",
+    "ERROR" : "Вы должны ввести значение"
+  },
   "LANGUAGES": {
     "EN": "Английский",
     "RU": "Русский",
