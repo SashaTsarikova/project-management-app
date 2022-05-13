@@ -45,7 +45,8 @@
 }
 
 .auth_info_image{
-  width: 100%;
+  width: 90%;
+  margin: 0 auto;
   height: 35%;
   background-repeat: no-repeat;
   background-size: cover;
@@ -58,6 +59,7 @@
     display: none;
   }
   .auth{
+    height: 80%;
     grid-template-columns: 100% 0%;
   }
 }
