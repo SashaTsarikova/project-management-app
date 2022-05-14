@@ -3,7 +3,7 @@
     <div class="edit_greeting">
       <p>{{"USER.TITLE" | translate}}</p>
     </div>
-    <form [formGroup]="updateUserForm">
+    <form [formGroup]="updateUserForm" class="user-form">
       <mat-form-field appearance="outline">
         <mat-label>{{"USER.NAME" | translate}}</mat-label>
         <input matInput formControlName="name">
@@ -42,4 +42,4 @@
       </div>
     </form>
   </div>
-</section> <div class="edit-form">
+</section>

@@ -17,8 +17,6 @@ import {filter, switchMap} from "rxjs";
 export class OneBoardComponent implements OnInit {
   boardId: string = this.route.snapshot.params['id'];
 
-  color: string = '#47c383';
-
   public board!: IBoard;
 
   constructor(
@@ -26,15 +24,7 @@ export class OneBoardComponent implements OnInit {
     private route: ActivatedRoute,
     public boardsService: BoardsService,
     private dialog: DialogService
-  ) {
-    if ((this.router.getCurrentNavigation()?.extras as any).state) {
-      if ((this.router.getCurrentNavigation()?.extras as any).state.color) {
-        this.color = (
-          this.router.getCurrentNavigation()?.extras as any
-        ).state.color;
-      }
-    }
-  }
+  ) { }
 
   ngOnInit(): void {
     this.boardsService.updateCurrentBoard(this.boardId)

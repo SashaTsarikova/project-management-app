@@ -1,7 +1,14 @@
 $black-text: #06152B;
 $light-text:rgba(128, 159, 184, 1);
-$main-bg: rgb(153, 178, 198);
-$light-bg:#D9E1E7;
+$main-bg: rgb(61, 106, 144);
+$light-bg:rgba(#1a237e, 0.75);;
+
+$scrollbarBgColor: rgba(0, 0, 0, .05);
+$scrollbarThumbColor: rgba(9, 151, 217, 0.2);
+$scrollbarThumbColorSecond: rgba(63, 81, 181, 0.4);
+$scrollbarWidth: 1rem;
+$scrollbarBorder: 0 solid var($scrollbarBgColor);
+$scrollbarBorderRadius: calc(var($scrollbarWidth) / 4);
 
 .main-container {
   height: 79vh;
@@ -9,6 +16,28 @@ $light-bg:#D9E1E7;
   overflow-x: hidden;
   overflow-y: hidden;
   color: $main-bg;
+}
+
+.container-scroll {
+scrollbar-width: var($scrollbarWidth);
+scrollbar-color: var($scrollbarThumbColor) var($scrollbarBgColor);
+}
+.container-scroll::-webkit-scrollbar {
+width: $scrollbarWidth;
+}
+.container-scroll::-webkit-scrollbar-track {
+background: $scrollbarBgColor;
+border-radius: $scrollbarBorderRadius;
+}
+.container-scroll::-webkit-scrollbar-thumb {
+background-color: $scrollbarThumbColor;
+border-radius: $scrollbarBorderRadius;
+border: $scrollbarBorder;
+background-image: linear-gradient(
+  180deg,
+  $scrollbarThumbColor 0%,
+  $scrollbarThumbColorSecond 90%
+);
 }
 
 .one-board-container{
@@ -27,6 +56,7 @@ $light-bg:#D9E1E7;
   background: #FEFEFE;
   border: 1px solid #5e686382;
   border-radius: 20px;
+  min-width: 100%;
 }
 
 .search-block_container{
@@ -69,6 +99,7 @@ $light-bg:#D9E1E7;
   min-height: 50vh;
   height: 60vh;
   overflow-x: scroll;
+  overflow-y: hidden;
 }
 
 .board-block_container{
@@ -81,12 +112,12 @@ $light-bg:#D9E1E7;
   align-items: center;
   justify-content: center;
   width: 200px;
-  height: 2.5rem;
+  height: 3rem;
   border-radius: 8px;
   font-size: 1.2rem;
   transition: all 0.2s linear;
   transform: rotate(270deg) translateX(-50%);
-  color: $light-text;
+  color: white;
   transition: all 0.2s ease-in-out;
   &:hover{
     box-shadow: 0 0 10px rgba(0,0,0,0.75);
@@ -103,7 +134,10 @@ $light-bg:#D9E1E7;
 
 @media (max-width: 1024px) and (orientation: landscape){
   .main-container {
-    max-height: 70vh;
+    max-height: calc(70vh - 1rem);
+    .back-container{
+      width: 6%;
+    }
     .search-block_container{
       width: 50%;
     }
@@ -111,6 +145,9 @@ $light-bg:#D9E1E7;
       .title-block{
         width: 100%;
         .title{
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
           text-align: center;
           width: 40%;
         }
@@ -119,13 +156,20 @@ $light-bg:#D9E1E7;
         width: 100%;
       }
     }
+    .button_create{
+      width: 120px;
+      font-size: 1rem;
+    }
   }
 }
 
 @media (max-width: 768px) and (orientation: portrait){
   .main-container {
-    height: 74vh;
-    max-height: 76vh;
+    height: calc(74vh - 1rem);
+    max-height: calc(76vh - 1rem);
+    .back-container{
+      width: 10%;
+    }
     .title-block{
       flex-direction: column;
       width: 100%;
