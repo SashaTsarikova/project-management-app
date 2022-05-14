@@ -19,6 +19,8 @@ export class OneBoardComponent implements OnInit {
 
   color: string = '#47c383';
 
+  searchString?: string = '';
+
   public board!: IBoard;
 
   constructor(

@@ -15,7 +15,7 @@
           <div class="search-block_container">
               <mat-icon>search</mat-icon>
               <!-- <mat-label>{{"BOARDS.INPUT" | translate}}</mat-label> -->
-              <input placeholder="search..." autocomplete="off" class="search-input">
+              <input placeholder="search..." autocomplete="off" class="search-input" [(ngModel)]="searchString" >
           </div>
       </div>
       <div class="board-block">
@@ -38,7 +38,8 @@
                 [column]="column"
                 [color]="color"
                 [boardId]="boardId"
-                (dropTaskEvent)="dropTask($event)">
+                (dropTaskEvent)="dropTask($event)"
+                [searchString]="searchString">
               </app-column-item>
             </div>
           </ng-container>

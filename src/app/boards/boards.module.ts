@@ -12,6 +12,7 @@ import { SharedModule } from '../shared/shared.module';
 import { BoardsRoutingModule } from './boards-routing.module';
 import { AddBgDirective } from './directives/add-bg.directive';
 import { AddBoarderColorDirective } from './directives/add-boarder-color.directive';
+import { SearchPipe } from './pipes/search.pipe';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { AddBoarderColorDirective } from './directives/add-boarder-color.directi
     TaskFormComponent,
     AddBgDirective,
     AddBoarderColorDirective,
+    SearchPipe,
   ],
   imports: [
     BoardsRoutingModule,
