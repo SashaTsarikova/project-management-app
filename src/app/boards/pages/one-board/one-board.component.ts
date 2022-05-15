@@ -8,6 +8,7 @@ import {CdkDragDrop, moveItemInArray, transferArrayItem} from "@angular/cdk/drag
 import {IBoard} from "../../interfaces/IBoard.interface";
 import {ITask} from "../../interfaces/ITask.interface";
 import {filter, switchMap} from "rxjs";
+import {LoaderService} from "../../../shared/services/loader.service";
 
 @Component({
   selector: 'app-one-board',
@@ -25,12 +26,14 @@ export class OneBoardComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     public boardsService: BoardsService,
-    private dialog: DialogService
+    private dialog: DialogService,
+    public loaderService: LoaderService,
   ) { }
 
   ngOnInit(): void {
-    this.boardsService.updateCurrentBoard(this.boardId)
-    this.boardsService.boardById$.subscribe(board => this.board = board)
+    this.loaderService.isLoadingOn();
+    this.boardsService.updateCurrentBoard(this.boardId);
+    this.boardsService.boardById$.subscribe(board => this.board = board);
   }
 
   goToBoards() {

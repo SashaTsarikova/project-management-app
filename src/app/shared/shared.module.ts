@@ -9,6 +9,7 @@ import { CreateNewBoardComponent } from './components/create-new-board/create-ne
 import {CreateNewColumnComponent} from "./components/create-new-column/create-new-column.component";
 import {CreateNewTaskComponent} from "./components/create-new-task/create-new-task.component";
 import { EditTaskComponent } from './components/edit-task/edit-task.component';
+import { LoaderComponent } from './components/loader/loader.component';
 
 const MODULES = [
   CommonModule,
@@ -25,9 +26,13 @@ const MODULES = [
     CreateNewBoardComponent,
     CreateNewColumnComponent,
     CreateNewTaskComponent,
-    EditTaskComponent
+    EditTaskComponent,
+    LoaderComponent
   ],
   imports: MODULES,
-  exports: MODULES,
+  exports: [
+    MODULES,
+    LoaderComponent
+  ],
 })
 export class SharedModule {}

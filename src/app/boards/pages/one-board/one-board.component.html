@@ -1,4 +1,4 @@
-<section class="main-container colored-bg">
+<section class="main-container colored-bg" *ngIf="!(loaderService.isLoading$ | async); else loading">
   <div class="one-board-container">
     <div class="back-container">
       <button mat-fab class="button_back" (click)="goToBoards()">
@@ -15,7 +15,7 @@
           <div class="search-block_container">
               <mat-icon>search</mat-icon>
               <!-- <mat-label>{{"BOARDS.INPUT" | translate}}</mat-label> -->
-              <input placeholder="search..." autocomplete="off" class="search-input" [(ngModel)]="searchString" >
+              <input placeholder="search..." autocomplete="off" class="search-input" [(ngModel)]="searchString">
           </div>
       </div>
       <div class="board-block container-scroll">
@@ -48,3 +48,7 @@
     </div>
   </div>
 </section>
+
+<ng-template #loading>
+  <app-loader></app-loader>
+</ng-template>
