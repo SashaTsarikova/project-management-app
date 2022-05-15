@@ -39,11 +39,14 @@
     display: flex;
     align-items: baseline;
     .title{
+      max-width: 250px;
       font-size: 1.3rem;
       line-height: 1.4rem;
-      text-transform: capitalize;
       text-decoration: underline;
       color: #ffa726;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
   }
 }
@@ -52,7 +55,7 @@
   position: sticky;
   transition: 0.5s ease-in-out;
   height: clamp(60px, 9vmin, 120px);
-  background-color: rgba($color: #309f66, $alpha: 0.8);
+  background-color: rgba($color: #d2f1e1, $alpha: 0.8);
   top: 0px;
 }
 

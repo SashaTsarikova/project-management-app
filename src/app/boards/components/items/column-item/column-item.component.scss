@@ -1,7 +1,38 @@
 $black-text: #06152B;
 $light-text:rgba(128, 159, 184, 1);
-$main-bg: rgb(153, 178, 198);
-$light-bg:rgb(217, 225, 231);
+// $main-bg: rgb(153, 178, 198);
+$main-bg: rgb(61, 106, 144);
+$light-bg:rgba(#1a237e, 0.75);
+
+$scrollbarBgColor: rgba(0, 0, 0, .05);
+$scrollbarThumbColor: rgba(9, 151, 217, 0.2);
+$scrollbarThumbColorSecond: rgba(63, 81, 181, 0.4);
+$scrollbarWidth: 0.4rem;
+$scrollbarBorder: 0 solid var($scrollbarBgColor);
+$scrollbarBorderRadius: calc(var($scrollbarWidth) / 4);
+
+.container-scroll {
+scrollbar-width: var($scrollbarWidth);
+scrollbar-color: var($scrollbarThumbColor) var($scrollbarBgColor);
+}
+.container-scroll::-webkit-scrollbar {
+width: $scrollbarWidth;
+}
+.container-scroll::-webkit-scrollbar-track {
+background: $scrollbarBgColor;
+border-radius: $scrollbarBorderRadius;
+}
+.container-scroll::-webkit-scrollbar-thumb {
+background-color: $scrollbarThumbColor;
+border-radius: $scrollbarBorderRadius;
+border: $scrollbarBorder;
+background-image: linear-gradient(
+  180deg,
+  $scrollbarThumbColor 0%,
+  $scrollbarThumbColorSecond 90%
+);
+}
+
 
 .main-container{
   width: 350px;
@@ -10,7 +41,7 @@ $light-bg:rgb(217, 225, 231);
   display: flex;
   align-items: stretch;
   border-radius: 5px;
-  border: 2px solid $light-bg;
+  border: 2px solid $main-bg;
   position: relative;
   flex-direction: column;
   margin-right: 3vmin;
@@ -38,7 +69,6 @@ $light-bg:rgb(217, 225, 231);
 }
 .column-container{
   margin: auto 1.2vmin;
-  // width: 90%;
   .title-block{
     margin-bottom: 1vmin;
     padding: 1vmin 0;
@@ -48,6 +78,7 @@ $light-bg:rgb(217, 225, 231);
       font-weight: normal;
       line-height: 1.4rem;
       letter-spacing: 0.2rem;
+      color: $black-text;
     }
     .title-input, .button_confirm, .button_reject{
       display: none;
@@ -74,11 +105,6 @@ $light-bg:rgb(217, 225, 231);
     }
   }
 }
-// .column-container_tasks{
-//   min-height: 30px;
-//   width: 95%;
-//   margin: 0 auto;
-// }
 
 .column-container_create{
   display: flex;
@@ -95,7 +121,7 @@ $light-bg:rgb(217, 225, 231);
     font-size: 1.2rem;
     letter-spacing: 0.2rem;
     transition: all 0.2s linear;
-    color: $light-text;
+    color: white;
     transition: all 0.2s ease-in-out;
     &:hover{
       box-shadow: 0 0 10px rgba(0,0,0,0.75);
@@ -117,7 +143,7 @@ $light-bg:rgb(217, 225, 231);
 @media (max-width: 1024px) and (orientation: portrait){
   .main-container{
     width: 300px;
-    max-height: 40vh;
+    max-height: calc(40vh - 1rem);
     overflow-y: scroll;
     margin-left: 3vmin;
   }
