@@ -5,6 +5,7 @@ import {IColumn} from "../interfaces/IColumn.interface";
 import {ITask} from "../interfaces/ITask.interface";
 import {IBoard} from "../interfaces/IBoard.interface";
 import {BehaviorSubject, Observable} from "rxjs";
+import {LoaderService} from "../../shared/services/loader.service";
 
 @Injectable({
   providedIn: 'root'
@@ -18,15 +19,22 @@ export class BoardsService {
 
   constructor(
     private http: HttpClient,
+    private loaderService: LoaderService,
     ) { }
 
   //Boards
   updateBoards() {
-    this.getAllBoards().subscribe(res => this.allBoardsSubject.next(res))
+    this.getAllBoards().subscribe(res => {
+      this.allBoardsSubject.next(res);
+      this.loaderService.isLoadingOff();
+    })
   }
 
   updateCurrentBoard(boardId: string) {
-    this.getBoardById(boardId).subscribe(res => this.boardByIdSubject.next(res))
+    this.getBoardById(boardId).subscribe(res => {
+      this.boardByIdSubject.next(res);
+      this.loaderService.isLoadingOff();
+    })
   }
 
   getAllBoards(): Observable<IBoard[]> {

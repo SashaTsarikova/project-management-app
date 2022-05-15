@@ -14,6 +14,7 @@ import {UserService} from "../../../../user/services/user.service";
 import {CdkDragDrop} from "@angular/cdk/drag-drop";
 import {filter, switchMap} from "rxjs";
 import { TranslateService } from '@ngx-translate/core';
+import {LoaderService} from "../../../../shared/services/loader.service";
 
 @Component({
   selector: 'app-column-item',
@@ -46,13 +47,14 @@ export class ColumnItemComponent implements OnInit {
     private dialogService: DialogService,
     private userService: UserService,
     public translate: TranslateService,
+    private loaderService: LoaderService,
   ) {}
 
   ngOnInit(): void {
     this.columnForm = this.fb.group({
       title: [this.column.title, [Validators.required]]
     })
-    this.userService.currentUserId().subscribe((userId) => this.currentUserId = userId)
+    this.userService.currentUserId().subscribe((userId) => this.currentUserId = userId);
   }
 
   changeTitleMenu() {
