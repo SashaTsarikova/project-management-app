@@ -3,12 +3,12 @@
   <form class="title-form" [formGroup]="taskForm" (submit)="onSubmit()">
     <mat-form-field class="example-full-width" appearance="outline">
       <mat-label>{{'CREATE_NEW_TASK.TASK_TITLE' | translate}}</mat-label>
-      <input matInput formControlName="title" placeholder="{{'CREATE_NEW_TASK.TASK_TITLE' | translate}}">
+      <input matInput formControlName="title" placeholder="{{'CREATE_NEW_TASK.TASK_TITLE' | translate}}" autocomplete="off">
       <mat-error *ngIf="taskForm.get('title')?.hasError('required')">{{'CREATE_NEW_TASK.ERROR' | translate}}</mat-error>
     </mat-form-field>
     <mat-form-field class="example-full-width" appearance="outline">
       <mat-label>{{'CREATE_NEW_TASK.TASK_DESCTIPRION' | translate}}</mat-label>
-      <input matInput formControlName="description" placeholder="{{'CREATE_NEW_TASK.TASK_DESCTIPRION' | translate}}">
+      <input matInput formControlName="description" placeholder="{{'CREATE_NEW_TASK.TASK_DESCTIPRION' | translate}}" autocomplete="off">
       <mat-error *ngIf="taskForm.get('description')?.hasError('required')">{{'CREATE_NEW_TASK.ERROR' | translate}}</mat-error>
     </mat-form-field>
   </form>

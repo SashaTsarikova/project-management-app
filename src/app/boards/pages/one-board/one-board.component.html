@@ -14,7 +14,8 @@
         </ng-container>
           <div class="search-block_container">
               <mat-icon>search</mat-icon>
-              <input placeholder="search..." autocomplete="off" class="search-input">
+              <!-- <mat-label>{{"BOARDS.INPUT" | translate}}</mat-label> -->
+              <input placeholder="search..." autocomplete="off" class="search-input" [(ngModel)]="searchString" >
           </div>
       </div>
       <div class="board-block container-scroll">
@@ -36,7 +37,8 @@
                 [columnData]="getColumnData(i, column)"
                 [column]="column"
                 [boardId]="boardId"
-                (dropTaskEvent)="dropTask($event)">
+                (dropTaskEvent)="dropTask($event)"
+                [searchString]="searchString">
               </app-column-item>
             </div>
           </ng-container>

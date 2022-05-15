@@ -29,6 +29,8 @@ export class ColumnItemComponent implements OnInit {
 
   @Input() public boardId!: string;
 
+  @Input() public searchString?: any;
+
   @Output() public dropTaskEvent = new EventEmitter<
     CdkDragDrop<ITask[] | undefined, ITask[]>>();
 

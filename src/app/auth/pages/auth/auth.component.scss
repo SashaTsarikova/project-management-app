@@ -1,6 +1,6 @@
 .auth{
   width: 100%;
-  height: 100%;
+  height: 79%;
   max-height: 100vh;
   display: grid;
   grid-template-columns: 60% 40%;
@@ -23,8 +23,8 @@
 
 .auth_info_text{
   width: 70%;
-  height: 50%;
-  margin: auto;
+  height: 30%;
+  margin: 0 auto;
   justify-items : center;
   align-items: center;
   font-style: normal;
@@ -44,13 +44,15 @@
   color: #FFFFFF;
 }
 
+.image-container {
+  max-height:600px;
+  overflow:hidden;
+}
+
 .auth_info_image{
-  width: 90%;
-  margin: 0 auto;
-  height: 35%;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-image: url("https://weeek.net/uploads/blog/cb903b4e4647fadc54c5d23e19054884.png.webp");
+  width: 100%;
+  height: auto;
+  margin-top: 200px;
 }
 
 
@@ -59,8 +61,11 @@
     display: none;
   }
   .auth{
-    height: 80%;
+    height: 77%;
     grid-template-columns: 100% 0%;
+    padding-top: 40px;
+    padding-bottom:10px;
+    align-items: start;
   }
 }
 

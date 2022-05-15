@@ -32,7 +32,7 @@
            [cdkDropListConnectedTo]="columnData.otherColumn"
            [cdkDropListData]="columnData.tasks"
            (cdkDropListDropped)="dropTask($event)">
-          <div class="task-item" *ngFor="let task of columnData.tasks || []" cdkDrag>
+          <div class="task-item" *ngFor="let task of columnData.tasks || [] | search:searchString " cdkDrag>
             <app-task-item class="task"
               [task]="task"
               [boardId]="boardId"

@@ -17,6 +17,8 @@ import {filter, switchMap} from "rxjs";
 export class OneBoardComponent implements OnInit {
   boardId: string = this.route.snapshot.params['id'];
 
+  searchString?: string = '';
+
   public board!: IBoard;
 
   constructor(

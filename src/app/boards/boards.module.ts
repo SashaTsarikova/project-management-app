@@ -10,6 +10,8 @@ import { TaskFormComponent } from './components/forms/task-form/task-form.compon
 import { BoardsComponent } from './pages/boards/boards.component';
 import { SharedModule } from '../shared/shared.module';
 import { BoardsRoutingModule } from './boards-routing.module';
+import { SearchPipe } from './pipes/search.pipe';
+
 
 @NgModule({
   declarations: [
@@ -21,6 +23,7 @@ import { BoardsRoutingModule } from './boards-routing.module';
     BoardFormComponent,
     ColumnFormComponent,
     TaskFormComponent,
+    SearchPipe,
   ],
   imports: [
     BoardsRoutingModule,

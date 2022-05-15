@@ -3,7 +3,7 @@
   <form class="column-form" [formGroup]="columnForm" (submit)="onSubmit()">
     <mat-form-field class="example-full-width" appearance="outline">
       <mat-label>{{'COLUMN_FORM.COLUMN_TITLE' | translate}}</mat-label>
-      <input matInput formControlName="title" placeholder="{{'COLUMN_FORM.COLUMN_TITLE' | translate}}">
+      <input matInput formControlName="title" placeholder="{{'COLUMN_FORM.COLUMN_TITLE' | translate}}" autocomplete="off">
       <mat-error *ngIf="columnForm.get('title')?.hasError('required')">{{'COLUMN_FORM.ERROR' | translate}}</mat-error>
     </mat-form-field>
   </form>
