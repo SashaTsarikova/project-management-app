@@ -10,9 +10,8 @@ import { TaskFormComponent } from './components/forms/task-form/task-form.compon
 import { BoardsComponent } from './pages/boards/boards.component';
 import { SharedModule } from '../shared/shared.module';
 import { BoardsRoutingModule } from './boards-routing.module';
-import { AddBgDirective } from './directives/add-bg.directive';
-import { AddBoarderColorDirective } from './directives/add-boarder-color.directive';
 import { SearchPipe } from './pipes/search.pipe';
+
 
 @NgModule({
   declarations: [
@@ -24,8 +23,6 @@ import { SearchPipe } from './pipes/search.pipe';
     BoardFormComponent,
     ColumnFormComponent,
     TaskFormComponent,
-    AddBgDirective,
-    AddBoarderColorDirective,
     SearchPipe,
   ],
   imports: [

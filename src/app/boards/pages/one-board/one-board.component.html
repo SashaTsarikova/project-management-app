@@ -1,4 +1,4 @@
-<section class="main-container" appAddBg [bgColor]="color">
+<section class="main-container colored-bg">
   <div class="one-board-container">
     <div class="back-container">
       <button mat-fab class="button_back" (click)="goToBoards()">
@@ -18,7 +18,7 @@
               <input placeholder="search..." autocomplete="off" class="search-input" [(ngModel)]="searchString" >
           </div>
       </div>
-      <div class="board-block">
+      <div class="board-block container-scroll">
         <div class="board-block_container">
          <div class="board-container_create">
           <button class="button_create" (click)="createColumn()">
@@ -36,7 +36,6 @@
               <app-column-item
                 [columnData]="getColumnData(i, column)"
                 [column]="column"
-                [color]="color"
                 [boardId]="boardId"
                 (dropTaskEvent)="dropTask($event)"
                 [searchString]="searchString">

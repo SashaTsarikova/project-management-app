@@ -4,15 +4,20 @@
   align-items: center;
   justify-content: center;
   .edit-form{
+    color: rgb(235, 246, 233);
+    font-size: 1.1rem;
+    line-height: 1.15rem;
+
     width: 30%;
     min-width: 330px;
+    max-width: 500px;
     min-height: 25vw;
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
     justify-content: space-between;
     background: rgba($color: #47c383, $alpha: 1);
-    border-radius: 10%;
+    border-top-right-radius: 3%;
     padding: 2%;
   }
 
@@ -22,9 +27,8 @@
     font-weight: 700;
     font-size: 26px;
     line-height: 28px;
-    color: rgb(235, 246, 233);
     text-align: center;
-    letter-spacing: 0.8rem;
+    letter-spacing: 0.2rem;
   }
 
   .edit_greeting :last-child::first-letter{
@@ -68,6 +72,7 @@
   .main-container{
     .edit-form{
       width: 60%;
+      padding: 5%;
     }
   }
 }
