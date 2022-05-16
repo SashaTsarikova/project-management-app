@@ -54,7 +54,8 @@
   },
   "ONE_BOARD": {
     "ADD_COLUMN": "Добавить колонку",
-    "ADD_TASK": "Добавить задачу"
+    "ADD_TASK": "Добавить задачу",
+    "SEARCH" : "поиск..."
   },
   "CREATE_NEW_BOARD": {
     "ENTER_BOARD_NAME" : "Введите название для новой доски",
