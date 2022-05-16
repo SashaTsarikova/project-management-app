@@ -56,17 +56,28 @@
 }
 
 
-@media (max-width: 768px){
+@media (max-width: 825px){
   .auth_info-container{
     display: none;
   }
   .auth{
-    height: 77%;
     grid-template-columns: 100% 0%;
-    padding-top: 40px;
-    padding-bottom:10px;
     align-items: start;
   }
 }
 
+@media (max-height: 565px){
+  .auth_info-container{
+    display: none;
+  }
+  .auth{
+    grid-template-columns: 100% 0%;
+    height: auto;
+
+  }
+  .auth_login-signup{
+    width: 90%;
+    margin: 0 auto;
+  }
+}
 
