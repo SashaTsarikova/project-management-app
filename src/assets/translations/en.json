@@ -9,12 +9,12 @@
         "ROLE": "Team lead",
         "INPUT": "Teamwork coordination, localization setup, routing, welcome page, user edit page, projects' selection page, single project page, header"
       },
-      "GRIGIRII": {
+      "GRIGORII": {
         "NAME": "Grigorii Iavorskii",
         "ROLE": "Front-end developer",
         "INPUT": "Universal modal confirmation window, LogIn/SignUp, Search, Modal windows for Create/Edit/Delete, 404 page, footer"
       },
-      "ANDREY": {
+      "ANDREI": {
         "NAME": "Andrei Yakimenka",
         "ROLE": "Front-end developer",
         "INPUT": "Backend deployment, setting up services for working with the backend (authorization, working with projects, columns, tasks), organization of error messages showing, loading and drag-n-drop functionality"
