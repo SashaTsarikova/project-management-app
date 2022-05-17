@@ -2,12 +2,15 @@
   <div class="signup_greeting">
     <p>{{"AUTH.SIGNUP.TITLE" | translate}}</p>
   </div>
+  <div>
   <form [formGroup]="signupForm" (submit)="onSubmit()">
-  <mat-form-field appearance="outline">
-    <mat-label>{{"USER.NAME" | translate}}</mat-label>
-    <input matInput formControlName="name">
-    <mat-error *ngIf="signupForm.get('name')?.hasError('required')">{{getErrorMessage()}}</mat-error>
-  </mat-form-field>
+  <div class="name-container">
+    <mat-form-field appearance="outline">
+      <mat-label>{{"USER.NAME" | translate}}</mat-label>
+      <input matInput formControlName="name">
+      <mat-error *ngIf="signupForm.get('name')?.hasError('required')">{{getErrorMessage()}}</mat-error>
+    </mat-form-field>
+  </div>
   <div class="email-container">
     <mat-form-field appearance="outline">
       <mat-label>{{"USER.LOGIN" | translate}}</mat-label>
@@ -37,5 +40,6 @@
   </div>
   <button type="submit" [disabled]="signupForm.invalid" class="signup_button" mat-raised-button color="primary">{{"AUTH.SIGNUP.BUTTON" | translate}}</button>
   </form>
+  </div>
   <p routerLink="/auth/login" class="signup_sign-up-link">{{"AUTH.SIGNUP.HAVE-ACCOUNT" | translate}} <button mat-button color="primary">Log in</button></p>
 </div>

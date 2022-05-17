@@ -12,7 +12,7 @@
       "GRIGIRII": {
         "NAME": "Grigorii Iavorskii",
         "ROLE": "Front-end developer",
-        "INPUT": "?"
+        "INPUT": "Universal modal confirmation window, LogIn/SignUp, Search, Modal windows for Create/Edit/Delete, 404, footer"
       },
       "ANDREY": {
         "NAME": "Andrei Yakimenka",
@@ -55,7 +55,8 @@
   },
   "ONE_BOARD": {
     "ADD_COLUMN": "Add column",
-    "ADD_TASK": "Add task"
+    "ADD_TASK": "Add task",
+    "SEARCH" : "search..."
   },
   "CREATE_NEW_BOARD": {
     "ENTER_BOARD_NAME" : "Enter name for a new board",

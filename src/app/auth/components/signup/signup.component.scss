@@ -1,5 +1,4 @@
 .signup-form{
-  min-height: 25vw;
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
@@ -20,7 +19,7 @@
 }
 
 
-.signup-form .mat-form-field{
+.signup-form mat-form-field{
   width: 100%;
 }
 
@@ -38,3 +37,60 @@
 .signup_sign-up-link{
   padding-top: 10px;
 }
+
+@media (max-height: 569px){
+  .signup-form{
+    width: 90%;
+    margin: 0 auto;
+    form{
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      gap: 0 15px;
+    }
+  }
+  .email-container, .password-container, .name-container{
+    width: 23%;
+    max-width: 400px;
+  }
+}
+
+@media (max-width: 1231px){
+  .email-container, .password-container, .name-container{
+    max-width: 236px;
+  }
+}
+
+@media (max-width: 1045px){
+  .email-container, .password-container, .name-container{
+    max-width: 236px;
+  }
+}
+
+@media (max-width: 827px){
+  .email-container, .password-container, .name-container{
+    max-width: 236px;
+
+    margin: 0px 30px;
+  }
+  form{
+    justify-content: space-between;
+    
+  }
+}
+
+@media (max-width: 622px){
+  .email-container, .password-container, .name-container{
+    min-width: 159px;
+    margin: 0px ;
+  }
+}
+
+
+@media (max-height: 559px){
+  .email-container, .password-container, .name-container, .signup-form .mat-form-field{
+    max-width: 236px;
+  }
+}
+

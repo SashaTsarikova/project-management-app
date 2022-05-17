@@ -11,7 +11,8 @@ export class SearchPipe implements PipeTransform {
 
     const tasks: string[] = [];
     value.forEach((task: any) => {
-      if (task.title.includes(searchString) || task.description.includes(searchString)) {
+      if (task.title.toLowerCase().includes(searchString.toLowerCase())
+      || task.description.toLowerCase().includes(searchString.toLowerCase())) {
         tasks.push(task);
       }
     });
