@@ -24,8 +24,8 @@
 .title{
   font-style: normal;
   font-weight: 500;
-  font-size: 2.5rem;
-  line-height: 2.6rem;
+  font-size: calc(2rem + 2vmin);
+  line-height: calc(2rem + 2vmin);
   text-align: center;
   color: #FFFFFF;
 }
@@ -34,8 +34,8 @@
   text-transform: uppercase;
   font-style: normal;
   font-weight: 900;
-  font-size: 3rem;
-  line-height: 3.5rem;
+  font-size: calc(2.5rem + 2vmin);
+  line-height: calc(3rem + 2vmin);
   color: #FFFFFF;
   text-align: center;
   padding: 2% 0;
@@ -84,8 +84,9 @@
   justify-content: space-between;
   margin-bottom: 5vmin;
   .item-card{
-    width: 32%;
+    width: 30%;
     border-left: 3vmin solid #ffa726 ;
+    min-height: 370px;
     .card-img-container{
       width: 100%;
       height: 100%;
@@ -112,7 +113,16 @@
   }
   .welcome_image-wrapper{
     .welcome_image-container{
-      transform: scale(1.2);
+      transform: scale(1.1);
+    }
+  }
+  .cards{
+    flex-wrap: wrap;
+    justify-content:  center;
+    .item-card{
+      width: 50%;
+      padding: 3%;
+      margin: 2%;
     }
   }
 }
