@@ -1,0 +1,57 @@
+@import '~@angular/material/theming';
+@import '~@angular/cdk/overlay-prebuilt.css';
+@include mat-core();
+$my-app-primary: mat-palette($mat-indigo, 700);
+$my-app-accent:  mat-palette($mat-red, 700);
+$my-app-warn:    mat-palette($mat-orange, 300);
+$my-app-theme: mat-light-theme($my-app-primary, $my-app-accent, $my-app-warn);
+@include angular-material-theme($my-app-theme);
+.alternate-theme {
+  $alternate-primary: mat-palette($mat-light-blue);
+  $alternate-accent:  mat-palette($mat-yellow, 400);
+  $alternate-theme: mat-light-theme($alternate-primary, $alternate-accent);
+  @include angular-material-theme($alternate-theme);
+}
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+button, button:active, button:focus, input {
+  outline: none;
+  border: none;
+}
+
+a, button{
+ cursor: pointer;
+}
+
+body { font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+html, body { height: 100%; font-size: 14px;}
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+simple-snack-bar > span {
+  margin: 0 auto;
+  text-align:center !important;
+}
+
+.colored-bg{
+  background: -webkit-linear-gradient(45deg, rgb(9, 151, 217) 15%, rgb(63, 81, 181) 75%);
+  background: -moz-linear-gradient(45deg, rgb(9, 151, 217) 15%, rgb(63, 81, 181) 75%);
+  background: linear-gradient(45deg, rgb(9, 151, 217) 15%, rgb(63, 81, 181) 75%);
+}
+
+.overlay-backdrop {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.overlay-panel {
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+  padding: 20px;
+}

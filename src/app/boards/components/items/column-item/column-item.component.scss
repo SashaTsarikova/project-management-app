@@ -1,0 +1,158 @@
+$black-text: #06152B;
+$light-text:rgba(128, 159, 184, 1);
+// $main-bg: rgb(153, 178, 198);
+$main-bg: rgb(61, 106, 144);
+$light-bg:rgba(#1a237e, 0.75);
+
+$scrollbarBgColor: rgba(0, 0, 0, .05);
+$scrollbarThumbColor: rgba(9, 151, 217, 0.2);
+$scrollbarThumbColorSecond: rgba(63, 81, 181, 0.4);
+$scrollbarWidth: 0.4rem;
+$scrollbarBorder: 0 solid var($scrollbarBgColor);
+$scrollbarBorderRadius: calc(var($scrollbarWidth) / 4);
+
+.container-scroll {
+scrollbar-width: var($scrollbarWidth);
+scrollbar-color: var($scrollbarThumbColor) var($scrollbarBgColor);
+}
+.container-scroll::-webkit-scrollbar {
+width: $scrollbarWidth;
+}
+.container-scroll::-webkit-scrollbar-track {
+background: $scrollbarBgColor;
+border-radius: $scrollbarBorderRadius;
+}
+.container-scroll::-webkit-scrollbar-thumb {
+background-color: $scrollbarThumbColor;
+border-radius: $scrollbarBorderRadius;
+border: $scrollbarBorder;
+background-image: linear-gradient(
+  180deg,
+  $scrollbarThumbColor 0%,
+  $scrollbarThumbColorSecond 90%
+);
+}
+
+
+.main-container{
+  width: 350px;
+  max-height: 50vh;
+  padding: 2%;
+  display: flex;
+  align-items: stretch;
+  border-radius: 5px;
+  border: 2px solid $main-bg;
+  position: relative;
+  flex-direction: column;
+  margin-right: 3vmin;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  color: $main-bg;
+  .close{
+    position: absolute;
+    right: 6%;
+    top: 0.5vmin;
+    width: 30px;
+    height: 30px;
+    color: $main-bg;
+    background-color: transparent;
+    margin: 2%;
+    cursor: pointer;
+    transition: all 0.2s linear;
+    &:hover{
+      transform: rotate(-45deg) translate(6px, 2px);
+    }
+    &:active{
+      transform: rotate(45deg);
+    }
+  }
+}
+.column-container{
+  margin: auto 1.2vmin;
+  .title-block{
+    margin-bottom: 1vmin;
+    padding: 1vmin 0;
+    .title{
+      width: 80%;
+      font-size: 1.2rem;
+      font-weight: normal;
+      line-height: 1.4rem;
+      letter-spacing: 0.2rem;
+      color: $black-text;
+    }
+    .title-input, .button_confirm, .button_reject{
+      display: none;
+    }
+  }
+  .title-block.titleInput{
+    display: flex;
+    .title{
+      display: none;
+    }
+    .title-input, .button_confirm, .button_reject{
+      display: block;
+    }
+    .button_confirm, .button_reject{
+      background-color: transparent;
+    }
+    .title-input{
+      width: 65%;
+      font-size: 1.2rem;
+      line-height: 1.4rem;
+      letter-spacing: 0rem;
+      border-bottom: 1px solid $main-bg;
+      padding: 2%;
+    }
+  }
+}
+
+.column-container_create{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .button_create{
+    background-color: $light-bg;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 90%;
+    height: 3rem;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    letter-spacing: 0.2rem;
+    transition: all 0.2s linear;
+    color: white;
+    transition: all 0.2s ease-in-out;
+    &:hover{
+      box-shadow: 0 0 10px rgba(0,0,0,0.75);
+    }
+    &:active{
+      box-shadow: 0 0 5px rgba(107, 104, 104, 0.75);
+      transform: scale(0.95);
+    }
+  }
+}
+
+@media (max-width: 1024px) and (orientation: landscape){
+  .main-container{
+    width: 300px;
+    max-height: 40vh;
+  }
+}
+
+@media (max-width: 1024px) and (orientation: portrait){
+  .main-container{
+    width: 300px;
+    max-height: calc(40vh - 1rem);
+    overflow-y: scroll;
+    margin-left: 3vmin;
+  }
+}
+
+.cdk-drag-animating {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.cdk-drag-placeholder {
+  opacity: 0;
+}

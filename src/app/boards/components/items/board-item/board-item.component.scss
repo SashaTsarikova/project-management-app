@@ -1,0 +1,85 @@
+$black-text: #06152B;
+$light-text:rgba(128, 159, 184, 1);
+$main-bg: rgb(153, 178, 198);
+$light-bg:rgb(217, 225, 231);
+
+.main-container{
+  width: 350px;
+  min-height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  position: relative;
+  flex-direction: column;
+  margin: 3vmin;
+  background-color: rgba(32, 165, 76, 0.7);
+  .title{
+    width: 75%;
+    text-align: center;
+    font-size: clamp(1.5rem, 2rem, 2.5rem);
+    font-weight: 700;
+    line-height: clamp(1.6rem, 2.1rem, 2.6rem);
+    letter-spacing: 0.2rem;
+    color: white;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .description{
+    width: 90%;
+    text-align: center;
+    color: $light-bg;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .open{
+    transition: all 0.2s linear;
+  }
+   ::ng-deep .open.mat-raised-button.mat-warn {
+    background-color:white;
+  }
+
+  .open:hover{
+    box-shadow: 0 0 15px rgba(0,0,0,0.75);
+  }
+  .open:active{
+    box-shadow: 0 0 10px rgba(107, 104, 104, 0.75);
+    transform: scale(0.95);
+  }
+  .close{
+    color: $light-bg;
+    position: absolute;
+    right: 4%;
+    top: 4%;
+    width: 30px;
+    height: 30px;
+    background-color: transparent;
+    margin: 2%;
+    cursor: pointer;
+    transition: all 0.2s linear;
+    &:hover{
+      transform: rotate(-45deg) translate(6px, 2px);
+    }
+    &:active{
+      transform: rotate(45deg);
+    }
+  }
+}
+
+@media (max-width: 1024px) and (orientation: landscape){
+  .main-container{
+    width: 320px;
+    align-self: center;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 768px) and (orientation: portrait){
+  .main-container{
+    width: 280px;
+    align-items: center;
+    justify-content: center;
+  }
+}

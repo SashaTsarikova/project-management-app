@@ -1,0 +1,19 @@
+<div class="wrapper">
+  <p class="modal_headline">{{'EDIT_TASK.ENTER_TASK_NAME' | translate}}</p>
+  <form class="title-form" [formGroup]="editForm" (submit)="onSubmit()">
+    <mat-form-field class="example-full-width" appearance="outline">
+      <mat-label>{{'EDIT_TASK.TASK_TITLE' | translate}}</mat-label>
+      <input matInput formControlName="title" placeholder="{{'EDIT_TASK.TASK_TITLE' | translate}}">
+      <mat-error *ngIf="editForm.get('title')?.hasError('required')">{{'EDIT_TASK.ERROR' | translate}}</mat-error>
+    </mat-form-field>
+    <mat-form-field class="example-full-width" appearance="outline">
+      <mat-label>{{'EDIT_TASK.TASK_DESCTIPRION' | translate}}</mat-label>
+      <input matInput formControlName="description" placeholder="{{'EDIT_TASK.TASK_DESCTIPRION' | translate}}">
+      <mat-error *ngIf="editForm.get('description')?.hasError('required')">{{'EDIT_TASK.ERROR' | translate}}</mat-error>
+    </mat-form-field>
+  </form>
+  <div class="edit-task-form_buttons">
+    <button (click)="reject()" mat-raised-button color="accent">{{'EDIT_TASK.CANCEL' | translate}}</button>
+    <button (click)="confirm()" type="submit" [disabled]="editForm.invalid" mat-raised-button color="primary">{{'EDIT_TASK.UPDATE' | translate}}</button>
+  </div>
+</div>

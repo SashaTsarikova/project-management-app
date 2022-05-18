@@ -1,0 +1,79 @@
+.main-container{
+  min-height: 79vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .edit-form{
+    color: rgb(235, 246, 233);
+    font-size: 1.1rem;
+    line-height: 1.15rem;
+
+    width: 30%;
+    min-width: 330px;
+    max-width: 500px;
+    min-height: 25vw;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    background: rgba($color: #47c383, $alpha: 1);
+    border-top-right-radius: 3%;
+    padding: 2%;
+  }
+
+  .edit_greeting{
+    text-transform: uppercase;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 26px;
+    line-height: 28px;
+    text-align: center;
+    letter-spacing: 0.2rem;
+  }
+
+  .edit_greeting :last-child::first-letter{
+    text-transform: uppercase;
+  }
+
+  .edit-form .mat-form-field{
+    width: 100%;
+  }
+
+  .edit_buttons{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    gap: 20px
+  }
+
+  .edit_button{
+    width: 100%;
+    height: auto;
+    border-radius: 30px;
+    padding: 5px 0;
+  }
+
+  .edit_sign-up-link{
+    padding-top: 10px;
+  }
+}
+
+@media (max-width: 1024px) and (orientation: landscape){
+  .main-container{
+    .edit-form{
+      margin: 5vmax 0;
+      width: 45%;
+    }
+  }
+}
+
+@media (max-width: 1024px) and (orientation: portrait){
+  .main-container{
+    .edit-form{
+      width: 60%;
+      padding: 5%;
+    }
+  }
+}
+

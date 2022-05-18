@@ -1,0 +1,19 @@
+.wrapper{
+  width: 245px;
+}
+
+.modal_headline{
+  font-size: 1.2em;
+}
+
+.wrapper mat-form-field{
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.task-form_buttons{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+}

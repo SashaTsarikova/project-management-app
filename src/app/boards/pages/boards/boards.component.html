@@ -1,0 +1,16 @@
+<section class="main-container" *ngIf="!(loaderService.isLoading$ | async); else loading">
+  <div class="boards-block">
+    <ng-container *ngIf="(boardsService.allBoards$ | async) as boards">
+      <ng-container *ngFor="let board of boards; let i = index">
+        <app-board-item
+          [board]="board"
+          [index]="i">
+        </app-board-item>
+      </ng-container>
+    </ng-container>
+  </div>
+</section>
+
+<ng-template #loading>
+  <app-loader></app-loader>
+</ng-template>

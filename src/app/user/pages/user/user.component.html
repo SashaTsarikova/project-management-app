@@ -1,0 +1,45 @@
+<section class="main-container colored-bg">
+  <div class="edit-container edit-form">
+    <div class="edit_greeting">
+      <p>{{"USER.TITLE" | translate}}</p>
+    </div>
+    <form [formGroup]="updateUserForm" class="user-form">
+      <mat-form-field appearance="outline">
+        <mat-label>{{"USER.NAME" | translate}}</mat-label>
+        <input matInput formControlName="name">
+        <mat-error *ngIf="updateUserForm.get('name')?.hasError('required')">{{getErrorMessage()}}</mat-error>
+      </mat-form-field>
+      <div class="email-container">
+        <mat-form-field appearance="outline">
+          <mat-label>{{"USER.LOGIN" | translate}}</mat-label>
+          <input matInput type="text" placeholder="login" formControlName="login" required>
+          <mat-error *ngIf="updateUserForm.get('login')?.hasError('required')">{{getErrorMessage()}}</mat-error>
+        </mat-form-field>
+      </div>
+      <div class="password-container">
+        <mat-form-field appearance="outline">
+          <mat-label>{{"USER.PASSWORD" | translate}}</mat-label>
+          <input matInput [type]="hide ? 'password' : 'text'" formControlName="password">
+          <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+          <mat-error *ngIf="updateUserForm.get('password')?.hasError('required')">{{getErrorMessage()}}</mat-error>
+        </mat-form-field>
+      </div>
+      <div class="password-container">
+        <mat-form-field appearance="outline">
+          <mat-label>{{"USER.REPASS" | translate}}</mat-label>
+          <input matInput [type]="hide ? 'password' : 'text'" formControlName="repeatpass">
+          <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+          <mat-error *ngIf="updateUserForm.get('repeatpass')?.hasError('required')">{{getErrorMessage()}}</mat-error>
+        </mat-form-field>
+      </div>
+      <div class="edit_buttons">
+        <button (click)="onSubmit(submitType.delete)" name="button_delete" [disabled]="updateUserForm.invalid" class="edit_button" mat-raised-button color="accent">{{"USER.DELETE" | translate}}</button>
+        <button (click)="onSubmit(submitType.edit)" name="button_upgrade" [disabled]="updateUserForm.invalid" class="edit_button" mat-raised-button color="primary">{{"USER.BUTTON" | translate}}</button>
+      </div>
+    </form>
+  </div>
+</section>
