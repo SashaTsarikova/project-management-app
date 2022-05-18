@@ -1,0 +1,121 @@
+{
+  "WELCOME": {
+    "PROJ-NAME":"project management app",
+    "DESCRIPTION": "Helps teams solve work problems efficiently",
+    "DEVELOPERS": "developers",
+    "TEAM": {
+      "SASHA": {
+        "NAME": "Aleksandra Tsarikova",
+        "ROLE": "Team lead",
+        "INPUT": "Teamwork coordination, localization setup, routing, welcome page, user edit page, projects' selection page, single project page, header"
+      },
+      "GRIGORII": {
+        "NAME": "Grigorii Iavorskii",
+        "ROLE": "Front-end developer",
+        "INPUT": "Universal modal confirmation window, LogIn/SignUp, Search, Modal windows for Create/Edit/Delete, 404 page, footer"
+      },
+      "ANDREI": {
+        "NAME": "Andrei Yakimenka",
+        "ROLE": "Front-end developer",
+        "INPUT": "Backend deployment, setting up services for working with the backend (authorization, working with projects, columns, tasks), organization of error messages showing, loading and drag-n-drop functionality"
+      }
+    }
+  },
+  "HEADER": {
+    "CREATE":"Create",
+    "MAIN": "Main"
+  },
+  "FOOTER": {
+    "GRIGORII" : "Grogirii Iavorskii",
+    "SASHA" : "Sasha Tsarikova",
+    "ANDREI": "Andrei Yakimenka"
+  },
+  "NOTFOUND": {
+    "NotFound" : "Page Not Found",
+    "SORRY" : "We're sorry. The page you are looking for cannot be found.",
+    "OnMainPage" : "On main page"
+  },
+  "AUTH": {
+    "LOGIN": {
+      "TITLE1": "hello again!",
+      "TITLE2": "your projects are waiting",
+      "SUCCESS": "Login success",
+      "HAVE-ACCOUNT": "Doesn't have an account?"
+    },
+    "SIGNUP": {
+      "TITLE": "create new profile",
+      "BUTTON": "Sign up",
+      "HAVE-ACCOUNT": "Already have an account?",
+      "SUCCESS": "Signup success"
+    }
+  },
+  "BOARDS": {
+    "INPUT": "Input search params",
+    "BUTTON": "Open board"
+  },
+  "ONE_BOARD": {
+    "ADD_COLUMN": "Add column",
+    "ADD_TASK": "Add task",
+    "SEARCH" : "search..."
+  },
+  "CREATE_NEW_BOARD": {
+    "ENTER_BOARD_NAME" : "Enter name for a new board",
+    "BOARD_TITLE" : "Board title",
+    "BOARD_DESCTIPRION" : "Board description",
+    "CANCEL" : "Cancel",
+    "CREATE" : "Сreate",
+    "ERROR" : "You must enter a value"
+  },
+  "BOARD_FORM": {},
+  "COLUMN_FORM": {
+    "ENTER_COLUMN_NAME" : "Enter name for a new column",
+    "COLUMN_TITLE" : "Column title",
+    "CANCEL" : "Cancel",
+    "CREATE" : "Сreate",
+    "ERROR" : "You must enter a value",
+    "COLUMN_ORDER" : "Column order"
+  },
+  "TASK_FORM": {},
+  "CREATE_NEW_TASK": {
+    "ENTER_TASK_NAME" : "Enter name for a new task",
+    "TASK_TITLE" : "Task title",
+    "TASK_DESCTIPRION" : "Task description",
+    "CANCEL" : "Cancel",
+    "CREATE" : "Сreate",
+    "ERROR" : "You must enter a value"
+  },
+  "USER": {
+    "TITLE": "update your profile",
+    "NAME": "Enter your name",
+    "LOGIN": "Enter your login",
+    "PASSWORD": "Enter your password",
+    "REPASS": "Repeat your password",
+    "BUTTON": "Update",
+    "REQUIRED": "You must enter a value",
+    "NOT-MATCH" : "Passwords do not match",
+    "UPDATE-DATA": "update user data?",
+    "DELETE-DATA": "DELETE this user?",
+    "DELETE" : "Delete"
+  },
+  "CONFIRMATION": {
+    "QUESTION" : "Are you sure want to",
+    "YES" : "Yes",
+    "NO" : "No",
+    "DELETE_BOARD" : "delete board",
+    "DELETE_COLUMN" : "delete column",
+    "DELETE_TASK" : "delete task"
+  },
+  "EDIT_TASK": {
+    "ENTER_TASK_NAME" : "Edit task",
+    "TASK_TITLE" : "Task title",
+    "TASK_DESCTIPRION" : "Task description",
+    "CANCEL" : "Cancel",
+    "UPDATE" : "Update",
+    "ERROR" : "You must enter a value"
+  },
+  "LANGUAGES": {
+    "EN": "English",
+    "RU": "Russian",
+    "PLACEHOLDER": "Please, choose the language you like"
+  }
+}
